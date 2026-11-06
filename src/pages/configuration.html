@@ -1,0 +1,52 @@
+<h1>Configuration</h1>
+<p class="lead">Settings decide how each stage runs: who commits, which browser, how much model. They never decide whether a stage runs.</p>
+
+<div class="note"><p><strong>Modes, never gates.</strong> No setting can skip the plan approval, the review, the manual test or your confirmation before a commit. Ask to turn one off and the agent will say no.</p></div>
+
+<h2 id="change">How to change a setting</h2>
+<p>Say it in plain words. The agent names the key and the file, shows the diff, and writes only after your yes.</p>
+<pre><code>Use implementator. Turn on CI watching for tally/cli.
+What does tally/cli use for pull requests?
+Use the team preset for all projects.</code></pre>
+
+<h2 id="layers">Where a value comes from</h2>
+<ol>
+<li><strong>The project:</strong> <code>projects/&lt;product&gt;/&lt;id&gt;/project.json</code>.</li>
+<li><strong>Your defaults:</strong> <code>implementator.json</code> at the notes root.</li>
+<li><strong>Built in:</strong> the defaults on this page.</li>
+</ol>
+<p>The first one that sets a key wins. A project overrides your defaults one key at a time, so it never has to repeat a whole block.</p>
+<pre><code>{
+  "version": 1,
+  "defaults": {
+    "features": {
+      "git": { "pr": "ready" },
+      "selfTest": { "maxIterations": 3 }
+    }
+  }
+}</code></pre>
+
+<h2 id="presets">Presets</h2>
+<p>A preset is a named set of settings. It goes through the same diff and the same yes as any other change.</p>
+{{presets}}
+
+<h2 id="settings">Every setting</h2>
+{{settings}}
+
+<h2 id="models">Models</h2>
+<p>Each stage runs on a model tier, not a named model: <code>cheap</code>, <code>standard</code> or <code>strong</code>. Your agent maps a tier to a real model. Effort is <code>low</code>, <code>medium</code>, <code>high</code> or <code>auto</code>.</p>
+<p>The plan, the failure triage and the review can never go below <code>standard</code>. These are the built-in values:</p>
+{{stages}}
+<p>Each stage takes the settings <code>orchestration.stages.&lt;stage&gt;.model</code>, <code>.effort</code> and <code>.isolate</code>. <code>isolate</code> runs the stage in its own subagent, where your agent has them. If it does not, the agent runs that stage itself and says so.</p>
+
+<h2 id="project-fields">Fields only a project has</h2>
+<p>These are written when you connect a repo and generate its skills. You rarely edit them by hand.</p>
+<div class="wide"><table>
+<thead><tr><th>Field</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>path</code></td><td>Where the code lives.</td></tr>
+<tr><td><code>type</code></td><td>Frontend, backend, CLI and so on.</td></tr>
+<tr><td><code>commands</code></td><td>The real lint, typecheck, test and launch commands.</td></tr>
+<tr><td><code>skills</code></td><td>Which generated skills fill the coding, testing, review and repo roles.</td></tr>
+</tbody>
+</table></div>

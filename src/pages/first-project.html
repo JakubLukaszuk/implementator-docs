@@ -1,0 +1,37 @@
+<h1>Your first project</h1>
+<p class="lead">From a code repo to one finished change. The examples come from a real run on <code>tally</code>, a small word-count CLI.</p>
+<p>The skills are not commands you type. You say what you want in your own words, and the agent loads the skill. To be sure it uses the pack, start with "Use implementator".</p>
+
+<h2 id="connect">1. Connect the repo</h2>
+<pre><code>Connect the tally repo to implementator.</code></pre>
+<p>The agent reads the repo and comes back with what it found: type, test and launch commands, and how it would verify a change. It asks three things: the project's name, its verification profile, and any hard rules, such as "keep it dependency-free". Nothing it could not confirm is invented: if a repo has no lint command, none is written down.</p>
+<p>A project is addressed as <code>product/id</code>, such as <code>tally/cli</code>.</p>
+
+<h2 id="skills">2. Approve its skills</h2>
+<p>Next the agent proposes a table of skills for this repo, with the evidence for each, and lists any it would skip. A CLI with no database gets no database skill. Each generated skill says which assumptions you should confirm and which gaps it noticed, such as a file with no tests. It reports those gaps and does not fix them on its own.</p>
+<p>The skills go in your notes repo, not your code repo.</p>
+
+<h2 id="preflight">3. Preflight</h2>
+<p>The agent checks that the project is ready: config valid, toolchain present, dependencies installed, commands real. The verdict is READY or a list of what to fix.</p>
+
+<h2 id="work">4. Start the work</h2>
+<pre><code>Start the real work: tally should take a --json flag that prints total and unique as JSON</code></pre>
+<p>The agent opens a workstream, claims it for this session and writes a plan. <strong>No code gets written until you approve that plan.</strong> Read the summary at the top. If you ask for a change, you get a revised plan to approve.</p>
+<p>Unsure what you want yet? Say "grill me on this first", and it will ask until the decisions are settled.</p>
+
+<h2 id="loop">5. Let the loop run</h2>
+<p>After approval the agent writes the code and tests, runs your checks, drives the app or CLI itself, including the failure paths, and reviews the change. If anything fails it goes back and fixes it. You will see the result, not every step.</p>
+
+<h2 id="manual">6. Run the manual test</h2>
+<p>The agent gives you a short table of commands and expected results. Run them yourself and report back:</p>
+<pre><code>Manual test passed, every row matched the table.</code></pre>
+<p>If a row does not match, say what you saw. Any code change sends the work back through tests and review.</p>
+
+<h2 id="commit">7. Commit</h2>
+<p>With the default settings, the agent commits and pushes after you confirm, and opens a draft pull request. With <code>you-commit</code> it stages the change on a branch and gives you the message.</p>
+
+<h2 id="close">8. Close it out</h2>
+<pre><code>Committed. Close it out.</code></pre>
+<p>The agent marks the work resolved, journals it, and moves it to <code>archived/</code> with its path kept. Nothing is deleted. Then it reports what is uncommitted in the notes repo and leaves that commit to you. To let it make that commit, say "commit the notes".</p>
+
+<p>Next: <a href="daily-use.html">daily use</a>.</p>

@@ -1,0 +1,71 @@
+<h1>Troubleshooting</h1>
+<p class="lead">Most of these come from real test runs. The messages are quoted as the pack prints them.</p>
+
+<div class="qa" id="skipped">
+<h2>The agent skipped a test, the review or the manual pass</h2>
+<p>Ask it: "What is left before this is done?" In our runs that was enough for the agent to name what it had skipped. Then say "Go on, finish the loop."</p>
+<p>The rules are instructions and an agent can drift from them, more so on a long session. Starting a new session reloads them. Closing is checked by a script as well: <a href="#not-resolved">see below</a>.</p>
+</div>
+
+<div class="qa" id="not-resolved">
+<h2><code>not resolved, nothing changed. Missing: ...</code></h2>
+<p>The script that closes a workstream found no plan, code review, self-test record or manual run in its folders. Finish what it names. If the work changed no code, tell the agent so and it can close it with <code>--no-code</code>. If the work is abandoned, close it as canceled.</p>
+</div>
+
+<div class="qa" id="eperm">
+<h2><code>spawn EPERM</code> when running tests</h2>
+<p>This is Codex's Windows sandbox refusing to let Node start a child process. Your code and tests are fine. Run the suite in a normal terminal and paste the result to the agent. Do not let it rewrite the tests to suit the sandbox. The pack tells it not to, but this is the one to watch for.</p>
+</div>
+
+<div class="qa" id="policy">
+<h2>Codex says every command is blocked by policy</h2>
+<p>On Windows, set the sandbox to unelevated mode as shown in <a href="get-started.html#codex-windows">Get started</a>.</p>
+</div>
+
+<div class="qa" id="bash">
+<h2><code>CreateFileMapping</code> or bash errors in Codex on Windows</h2>
+<p>Git Bash cannot start inside that sandbox. The pack does not need it, because every script is Python. If your project's commands are written for bash, the check script falls back to the system shell, so a command that truly needs bash has to be run by you.</p>
+</div>
+
+<div class="qa" id="gh">
+<h2><code>gh</code> says the token is invalid, but you are signed in</h2>
+<p>A sandboxed agent often cannot read the system keyring. Run <code>gh auth status</code> in a normal terminal to be sure. The pack shows this as a warning for that reason.</p>
+</div>
+
+<div class="qa" id="path">
+<h2><code>cannot create ... (263 characters): No such file or directory</code></h2>
+<p>Windows stops at 260 characters unless long paths are turned on, and a workstream's files sit several folders deep. Move the notes repo somewhere short, like <code>C:\notes</code>, or use shorter initiative names. Git may need <code>core.longpaths</code> for the same reason, and that is your choice to make: the agent should not change it.</p>
+</div>
+
+<div class="qa" id="root">
+<h2><code>set IMPL_NOTES_ROOT to the notes repo root</code></h2>
+<p>The agent ran a script without saying where your notes are. It will usually correct this by itself. On PowerShell the variable lasts for one command, so it has to be set on the same line.</p>
+</div>
+
+<div class="qa" id="blocked">
+<h2><code>BLOCKED: live claim by ...</code></h2>
+<p>Another session holds this workstream. Finish there, or wait for the claim to expire after four hours. If that session is gone, tell the agent to take over; it will use <code>--force</code> on your word.</p>
+</div>
+
+<div class="qa" id="quotes">
+<h2>Settings fail to apply on PowerShell, or accented text comes out damaged</h2>
+<p>PowerShell strips quotes from JSON arguments and re-encodes piped text. The pack tells the agent to pass both through a temporary file. If you see damage in a journal, remind it to use <code>--body-file</code>.</p>
+</div>
+
+<div class="qa" id="disconnected">
+<h2>The agent suddenly cannot reach the pack</h2>
+<p>Another app probably signed in to your Agensi account, and only the newest stays connected. Sign in again from the agent you want to use. See <a href="get-started.html#connect">Connect your agent</a>.</p>
+</div>
+
+<div class="qa" id="review">
+<h2>The review says it was not independent</h2>
+<p>The review is meant to run in separate subagents. If your agent could not start any in that session, it does the review itself and says so. Ask for a re-run with independent subagents if the change matters. It costs more.</p>
+</div>
+
+<div class="qa" id="temp">
+<h2>A temporary script was left behind</h2>
+<p>Each script runs from a temporary file that the agent deletes afterwards. If a delete is refused, the agent should give you the exact path, and you can remove the file yourself. It holds no private data.</p>
+</div>
+
+<h2 id="more">Still stuck</h2>
+<p>Message the creator through <a href="https://www.agensi.io/creators/nihillon">Agensi</a>, and include the message you saw.</p>

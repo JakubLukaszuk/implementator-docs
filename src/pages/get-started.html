@@ -1,0 +1,74 @@
+<h1>Get started</h1>
+<p class="lead">Connect your agent to the store, then ask it to set implementator up. The first run takes a few minutes and a handful of answers.</p>
+
+<h2 id="need">What you need</h2>
+<ul>
+<li><strong>An agent that can sign in to Agensi:</strong> Claude Code or Codex CLI are the two we have tested.</li>
+<li><strong>Git.</strong> Your notes live in a git repo.</li>
+<li><strong>Python 3.8 or newer.</strong> Every script in the pack is Python. You do not need bash.</li>
+<li><strong>Your code in a git repo.</strong></li>
+<li><strong>Optional:</strong> <code>gh</code> or <code>glab</code> for pull requests and CI, and a Playwright MCP server for browser self-tests.</li>
+</ul>
+
+<h2 id="connect">1. Connect your agent</h2>
+<h3>Claude Code</h3>
+<pre><code>claude mcp add --transport http agensi https://mcp.agensi.io/mcp/auth</code></pre>
+<p>Then open <code>/mcp</code>, choose Authenticate, sign in with the account you bought the pack with, and click Allow.</p>
+<h3>Codex CLI</h3>
+<pre><code>codex mcp add agensi --url https://mcp.agensi.io/mcp/auth
+codex mcp login agensi</code></pre>
+<p>Sign in and click Allow. On Windows, read <a href="#codex-windows">Codex on Windows</a> as well.</p>
+<div class="note"><p><strong>Only the newest app stays connected.</strong> Each app you sign in from counts as one agent, and signing in from a new one disconnects the others. Switch agents by connecting the new one, or in Dashboard → MCP on Agensi.</p></div>
+<p>Other agents are on <a href="https://www.agensi.io/docs/mcp-setup">Agensi's setup page</a>. They can connect, but this pack has not been tested on them.</p>
+
+<h2 id="setup">2. Run the setup</h2>
+<p>Open a session in the folder that holds your code, and say:</p>
+<pre><code>I just bought implementator. Set it up for me. My code is in the tally folder here.</code></pre>
+<p>Your agent then:</p>
+<ol>
+<li><strong>Asks where the notes repo goes,</strong> and recommends a folder beside your code. Never put it inside a code repo. Keep the path short: see <a href="troubleshooting.html#path">the Windows path limit</a>.</li>
+<li><strong>Offers a small pointer file</strong> for the notes repo, so new sessions there know to start with implementator. It is written only if you say yes.</li>
+<li><strong>Asks six questions,</strong> each with a recommendation based on what it found on your machine. Answer the ones you care about; <code>ok</code> accepts the rest.</li>
+<li><strong>Shows the change as a diff</strong> and writes <code>implementator.json</code> only after your yes.</li>
+</ol>
+
+<h3 id="questions">The six questions</h3>
+<div class="wide"><table>
+<thead><tr><th>Question</th><th>Your choices</th></tr></thead>
+<tbody>
+<tr><td>How should finished work leave?</td><td>Draft pull request; solo (push, no PR); team (draft PR, worktrees, CI watched); or you-commit (the agent stages and drafts the message, you do the rest).</td></tr>
+<tr><td>Which issue tracker do your ticket ids come from?</td><td>None, Linear, Jira, GitHub, GitLab, Azure Boards, other.</td></tr>
+<tr><td>Where is the code hosted?</td><td>Auto reads it from each repo's remote, or name one.</td></tr>
+<tr><td>How should the browser self-test run?</td><td>Which driver, visible or headless, and whether to record.</td></tr>
+<tr><td>Watch CI after each push and fix what goes red?</td><td>Yes or no.</td></tr>
+<tr><td>Model cost?</td><td>Balanced, economical or maximum quality.</td></tr>
+</tbody>
+</table></div>
+<p>None of this is final. Every answer can be changed later: see <a href="configuration.html">Configuration</a>.</p>
+
+<h2 id="notes">What the notes repo looks like</h2>
+<pre><code>implementator-notes/
+  implementator.json          your defaults
+  epics/                      work that spans several projects
+  projects/
+    tally/cli/                one connected project
+      project.json            its settings
+      skills/                 coding, testing, review, repo
+      ADD-JSON-OUTPUT/        one feature
+        workstreams/json-output/
+          RESUME.md           the journal, newest first
+          plans/ docs/ tests/
+  archived/                   finished work, path kept</code></pre>
+<p>It is an ordinary git repo. The agent reports what is uncommitted and leaves the commit to you, unless you tell it to commit the notes.</p>
+
+<h2 id="codex-windows">Codex on Windows</h2>
+<p>Three things are different here, and all three come from Codex's Windows sandbox.</p>
+<ul>
+<li><strong>Allow commands to run.</strong> In our tests <code>workspace-write</code> rejected every command until the sandbox was set to its unelevated mode, which keeps the sandbox on:
+<pre><code>codex -s workspace-write -c 'windows.sandbox="unelevated"'</code></pre>
+We tested this with <code>codex exec</code>. Do not turn the sandbox off to get around it.</li>
+<li><strong>Node cannot start child processes,</strong> so <code>npm test</code> fails with <code>spawn EPERM</code> on any project that uses <code>node --test</code> or spawns its CLI in tests. Python and git are fine. The agent will ask you to run the suite outside the sandbox and paste the result. That counts as the run.</li>
+<li><strong><code>gh</code> cannot read your sign-in,</strong> so it may say the token is invalid when it is not. The pack reports this as a warning, not a failure.</li>
+</ul>
+
+<p>Next: <a href="first-project.html">your first project</a>.</p>

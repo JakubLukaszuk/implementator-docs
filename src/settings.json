@@ -1,0 +1,186 @@
+{
+  "groups": [
+    {
+      "id": "s-work",
+      "title": "How finished work leaves",
+      "keys": {
+        "features.git.commit": {
+          "what": "Who runs <code>git commit</code> in your code repo. <code>agent</code> commits after you confirm. <code>user</code> stages the change and prints the message, and you take it from there.",
+          "when": "you want to keep your hands on every commit."
+        },
+        "features.git.push": {
+          "what": "Whether the agent pushes. <code>false</code> commits locally only.",
+          "when": "the repo has no remote yet, or you push by hand."
+        },
+        "features.git.pr": {
+          "what": "How a pull request is opened: as a draft, ready for review, or not at all.",
+          "when": "you work alone (<code>never</code>) or your team reviews straight away (<code>ready</code>)."
+        },
+        "features.git.branchPrefix": {
+          "what": "A prefix for branches the loop creates, such as <code>feat/</code>. Left unset, it follows the repo's own convention.",
+          "when": "your team has a naming rule the repo does not show."
+        },
+        "features.git.worktree": {
+          "what": "Does each workstream's code changes in its own git worktree, so your main checkout stays untouched.",
+          "when": "you run several sessions on one repo."
+        }
+      }
+    },
+    {
+      "id": "s-after",
+      "title": "After a push",
+      "keys": {
+        "features.postPush.watchCI": {
+          "what": "Watches CI after a push through the host's own CLI and fixes what goes red. It checks for a merge conflict first, because a conflict stops CI from running at all.",
+          "when": "the repo has CI and the host CLI is signed in."
+        },
+        "features.postPush.finalHeadedTest": {
+          "what": "Runs one last drive of the changed screens in a visible browser, once CI is green.",
+          "when": "you want a final look at the real thing before merging."
+        },
+        "features.postPush.flakePatterns": {
+          "what": "Patterns for failures you know to be flaky. A match is labelled as a known flake and the rerun command is suggested. Nothing is rerun by itself, and an unmatched failure still counts as a real one.",
+          "when": "one CI job fails at random and wastes your time."
+        }
+      }
+    },
+    {
+      "id": "s-platform",
+      "title": "Host and tracker",
+      "keys": {
+        "platform.host": {
+          "what": "Where the code is hosted, which decides the CLI used for pull requests. <code>auto</code> reads it from the repo's <code>origin</code> remote.",
+          "when": "the remote's address does not show the host, such as a self-hosted server."
+        },
+        "platform.tracker": {
+          "what": "The issue tracker your ticket ids come from. <code>none</code> leaves ids as plain text.",
+          "when": "your branch or initiative names carry ids like ABC-123."
+        },
+        "platform.ticketPattern": {
+          "what": "A regular expression for your ticket ids, such as <code>ACME-\\d+</code>.",
+          "when": "your ids do not look like ABC-123."
+        },
+        "platform.ticketUrl": {
+          "what": "The address of a ticket, with <code>{id}</code> where the id goes.",
+          "when": "you set a tracker and want ids turned into links."
+        }
+      }
+    },
+    {
+      "id": "s-verify",
+      "title": "How a change is verified",
+      "keys": {
+        "verification": {
+          "what": "How the agent drives a change itself. <code>browser</code> uses a real browser, <code>api</code> calls a live server, <code>mobile</code> uses a device or emulator, <code>generic</code> runs the real command. <code>auto</code> picks from the project type.",
+          "when": "the type of a project does not match how it is really used."
+        },
+        "features.selfTest.unhappyPaths": {
+          "what": "Which failure paths the self-test must force besides the happy path.",
+          "when": "a path does not exist on a surface, such as no loading state."
+        },
+        "features.selfTest.maxIterations": {
+          "what": "How many fix-and-retry rounds the self-test gets before it reports the result as flaky instead of guessing.",
+          "when": "a slow project burns too much on retries."
+        },
+        "features.selfTest.smokePass": {
+          "what": "Adds a short drive over the app's core flows, not only the screens that changed.",
+          "when": "changes tend to break things far from where they were made."
+        },
+        "features.selfTest.record": {
+          "what": "Records the browser self-test as evidence: video, trace, both, or only when something goes wrong. Needs a Playwright MCP server started with <code>--caps=devtools</code>.",
+          "when": "you want proof of a drive to attach to a review."
+        },
+        "tests.unit": {
+          "what": "Whether the loop writes unit tests. <code>false</code> writes no new ones, and the existing suite still runs.",
+          "when": "a project has no unit test setup and should not get one."
+        },
+        "testHooks": {
+          "what": "The attribute the self-test finds elements by, such as <code>data-testid</code>.",
+          "when": "the project uses something other than what the scan found."
+        }
+      }
+    },
+    {
+      "id": "s-browser",
+      "title": "Browser and screenshots",
+      "keys": {
+        "features.browserDriver": {
+          "what": "What drives the browser self-test. <code>auto</code> uses the Playwright MCP server when connected. <code>claude-chrome</code> is for Claude Code only, with the Claude in Chrome extension.",
+          "when": "you need your real, signed-in Chrome."
+        },
+        "features.browserMode": {
+          "what": "Whether Playwright shows a window. Set when the server starts, so a session cannot change it midway. The loop looks for an MCP server named <code>playwright</code> for headed runs and <code>playwright-headless</code> for headless ones.",
+          "when": "you run on a server or want to keep working undisturbed."
+        },
+        "features.screenshots.mode": {
+          "what": "When pull request screenshots are taken. <code>auto</code> takes them only if a change alters something visible.",
+          "when": "you want them always, or never."
+        },
+        "features.screenshots.viewports": {
+          "what": "Which sizes to capture: desktop, tablet, mobile.",
+          "when": "the project has a phone layout worth showing."
+        },
+        "features.screenshots.darkMode": {
+          "what": "Also captures each shot in the dark colour scheme.",
+          "when": "the app has a dark mode."
+        }
+      }
+    },
+    {
+      "id": "s-project",
+      "title": "Project rules and review format",
+      "keys": {
+        "rules": {
+          "what": "A path to a Markdown file of hard rules for this project, which the loop must honour.",
+          "when": "something must always hold, such as \"no new dependencies\"."
+        },
+        "review.reportFormat": {
+          "what": "A path to your own template for the review report.",
+          "when": "your team expects a set format."
+        }
+      }
+    },
+    {
+      "id": "s-tiers",
+      "title": "Model tiers and escalation",
+      "intro": "The stage table is under <a href=\"#models\">Models</a> below.",
+      "keys": {
+        "orchestration.tiers.cheap": {
+          "what": "The real model behind the <code>cheap</code> tier. Unset, your agent decides.",
+          "when": "you want a specific model for routine stages."
+        },
+        "orchestration.tiers.standard": {
+          "what": "The real model behind the <code>standard</code> tier."
+        },
+        "orchestration.tiers.strong": {
+          "what": "The real model behind the <code>strong</code> tier."
+        },
+        "orchestration.escalation.enabled": {
+          "what": "Moves a stalled stage up to a stronger model instead of retrying on the same one.",
+          "when": "you need a hard ceiling on cost."
+        },
+        "orchestration.escalation.to.model": {
+          "what": "The tier a stalled stage moves up to."
+        },
+        "orchestration.escalation.to.effort": {
+          "what": "The effort it runs at there."
+        },
+        "orchestration.escalation.to.isolate": {
+          "what": "Whether the escalated stage runs in its own subagent."
+        }
+      }
+    }
+  ],
+  "stages": {
+    "orient": "Reading the state of the work",
+    "plan": "Writing the plan",
+    "code": "Writing the code",
+    "staticChecks": "Lint, typecheck, tests",
+    "selfTest": "Driving the app",
+    "triage": "Working out why something failed",
+    "review": "The code review",
+    "manualScenario": "Writing your manual test",
+    "commit": "Commit and pull request",
+    "postPush": "Watching CI"
+  }
+}

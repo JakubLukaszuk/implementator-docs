@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily use - Implementator Lite</title>
+<meta name="description" content="Documentation for Implementator Lite, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to the content</a>
+<div class="shell">
+<header class="side">
+<a class="brand" href="index.html">Implementator <span>Lite</span></a>
+<nav aria-label="Documentation">
+<ul>
+<li><a href="index.html">Overview</a></li>
+<li><a href="get-started.html">Get started</a></li>
+<li><a href="first-project.html">Your first project</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="daily-use.html" aria-current="page">Daily use</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</nav>
+</header>
+<main id="content">
+<h1>Daily use</h1>
+<p class="lead">Once a project is connected, most days come down to a few sentences. Your agent does not remember the framework between sessions, so begin each one by naming it.</p>
+
+<h2 id="start">Start a session</h2>
+<pre><code>Use implementator. Where did we leave off?</code></pre>
+<p>The agent loads the rules and shows every active workstream: its status, the newest journal entry, how old it is, and any pull request. If you added the pointer file during setup, a session opened in the notes repo finds its way there alone.</p>
+
+<h2 id="new">Start new work</h2>
+<pre><code>Use implementator. Add a --version flag to tally that prints the version from package.json.</code></pre>
+<p>Every change opens its own workstream and goes through the <a href="index.html#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
+
+<h2 id="resume">Continue later</h2>
+<p>The journal is the memory. A new session reads it, finds the last plan and test record, and carries on. Short work and long work are handled the same way.</p>
+
+<h2 id="parallel">Several sessions at once</h2>
+<p>One workstream takes one agent at a time. A session claims its workstream before working on it, and a second session gets a clear refusal instead of quietly sharing it. A claim from a crashed session expires after four hours. Different workstreams can run side by side.</p>
+<p>With <code>features.git.worktree</code> on, each workstream gets its own git worktree, so parallel changes to one repo stay apart.</p>
+
+<h2 id="skills">The other skills</h2>
+<div class="wide"><table>
+<thead><tr><th>Say</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td>"Grill me on this plan."</td><td>Rounds of questions, each with a recommended answer, until nothing is assumed. The agent looks up facts itself and asks you for decisions.</td></tr>
+<tr><td>"Diagnose this flaky test."</td><td>It builds a check that fails on this bug first, reproduces and narrows it, tests one explanation at a time, and fixes it behind a regression test.</td></tr>
+<tr><td>"Mock up a few options for this page."</td><td>Temporary visual edits in the running app, a screenshot of each, then everything reverted. You pick one.</td></tr>
+<tr><td>"Add before and after screenshots to the PR."</td><td>Shots of the changed surface, at the viewports you set.</td></tr>
+<tr><td>"Check tally/cli is ready."</td><td>Runs preflight on its own.</td></tr>
+<tr><td>"Refresh the skills for tally/cli."</td><td>Rescans the repo and shows you what moved.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="notes">Looking after the notes</h2>
+<ul>
+<li>Sessions end with a report of what is uncommitted in the notes repo and a suggested commit command. Run it, or tell the agent to commit the notes.</li>
+<li>Commit the notes after a close. An archive that exists only in your working folder is not safe yet.</li>
+<li>Give the notes repo a private remote. Nothing else backs it up.</li>
+</ul>
+
+<p>Next: <a href="troubleshooting.html">troubleshooting</a>.</p>
+
+<footer>
+<p>Settings and presets on these pages are generated from the source at commit <code>1ec1d54</code>.</p>
+</footer>
+</main>
+</div>
+</body>
+</html>
