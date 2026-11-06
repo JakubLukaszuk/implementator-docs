@@ -16,7 +16,6 @@ import html
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 
@@ -25,8 +24,24 @@ SRC = os.path.join(ROOT, "src")
 OUT = os.path.join(ROOT, "docs")
 IMPL = os.environ.get("IMPLEMENTATOR_REPO") or os.path.join(os.path.dirname(ROOT), "implementator")
 
-PAGES = [("index", "Overview"), ("get-started", "Get started"), ("first-project", "Your first project"),
-         ("configuration", "Configuration"), ("daily-use", "Daily use"), ("troubleshooting", "Troubleshooting")]
+PAGES = [("overview", "Overview"), ("get-started", "Get started"), ("first-project", "Your first project"),
+         ("daily-use", "Daily use"), ("configuration", "Configuration"), ("videos", "Videos"),
+         ("troubleshooting", "Troubleshooting")]
+
+# Written by hand and kept in docs/: the videos, their posters and the images.
+ASSET_DIRS = ("videos", "img")
+
+VIDEOS = {
+    "v1-what-it-does": ("What Implementator does", "A real change, from a Jira ticket to a merged pull request."),
+    "v2-set-it-up": ("Set it up", "The notes repo, the pointer file and the six questions."),
+    "v3-connect-a-repo": ("Connect a repo", "What the agent detects, and the skills it proposes."),
+    "v4-one-change": ("One change, start to finish", "Plan, code, tests, review, manual test, pull request, close."),
+    "v5-change-a-setting": ("Change a setting", "A plain request, a diff, a yes, and a gate that will not switch off."),
+    "v6-codex-on-windows": ("Codex on Windows", "The sandbox, and what the agent does when Node cannot run there."),
+    "v8-jira-ticket": ("Work from a Jira ticket", "The ticket is read, saved unchanged, and planned from."),
+    "v9-mockup-to-code": ("From a mockup to shipped code", "Options on the running page, a pick, then the whole loop."),
+    "v10-github": ("GitHub, from branch to merge", "A real draft pull request, CI, your merge, and the close."),
+}
 
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -116,6 +131,18 @@ def presets_table():
             + "".join(rows) + "</tbody></table></div>")
 
 
+def film(key, autoplay=False):
+    title, note = VIDEOS[key]
+    return ('<figure class="film"><video controls preload="none" playsinline poster="img/posters/' + key
+            + '.jpg" src="videos/' + key + '.webm" aria-label="' + html.escape(title) + '"></video>'
+            '<figcaption><b>' + html.escape(title) + "</b> " + html.escape(note) + "</figcaption></figure>")
+
+
+def films(text):
+    text = re.sub(r"\{\{film:([a-z0-9-]+)\}\}", lambda m: film(m.group(1)), text)
+    return text.replace("{{all-films}}", "\n".join(film(k) for k in VIDEOS))
+
+
 def stamp():
     rev = subprocess.run(["git", "-C", IMPL, "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
     return rev.stdout.strip() or "unknown"
@@ -129,6 +156,18 @@ def nav(current):
     return "\n".join(items)
 
 
+def pager(current):
+    """Links to the page before and after this one, so the docs read through in order."""
+    slugs = [s for s, _ in PAGES]
+    i = slugs.index(current)
+    out = []
+    if i > 0:
+        out.append('<a class="prev" href="' + PAGES[i - 1][0] + '.html"><span>Previous</span>' + PAGES[i - 1][1] + "</a>")
+    if i < len(PAGES) - 1:
+        out.append('<a class="next" href="' + PAGES[i + 1][0] + '.html"><span>Next</span>' + PAGES[i + 1][1] + "</a>")
+    return '<nav class="pager" aria-label="Pages">' + "".join(out) + "</nav>"
+
+
 def build():
     schemas, errors = load_schemas(IMPL)
     if errors:
@@ -137,15 +176,27 @@ def build():
     text = json.loads(read(SRC, "settings.json"))
     layout = read(SRC, "layout.html")
     rev = stamp()
-    files = {"style.css": read(SRC, "style.css"), ".nojekyll": ""}
+    files = {"base.css": read(SRC, "base.css"), "style.css": read(SRC, "style.css"), "home.css": read(SRC, "home.css"),
+             "home.js": read(SRC, "home.js"),
+             ".nojekyll": ""}
+    counts = {"{{n-settings}}": str(len(spec)),
+              "{{n-presets}}": str(len([f for f in os.listdir(os.path.join(IMPL, ".claude", "skills", "configure", "presets"))
+                                        if f.endswith(".json")]))}
+    home = read(SRC, "home.html").replace("{{rev}}", rev)
+    for k, v in counts.items():
+        home = home.replace(k, v)
+    files["index.html"] = home
     for slug, title in PAGES:
         body = read(SRC, "pages", slug + ".html")
-        body = (body.replace("{{settings}}", settings_tables(spec, text))
-                .replace("{{stages}}", stage_table(spec, text))
-                .replace("{{presets}}", presets_table()))
-        page_title = "Implementator" if slug == "index" else title + " - Implementator"
+        body = films(body.replace("{{settings}}", settings_tables(spec, text))
+                     .replace("{{stages}}", stage_table(spec, text))
+                     .replace("{{presets}}", presets_table()))
+        page_title = title + " - Implementator"
+        current = ' aria-current="page"'
         files[slug + ".html"] = (layout.replace("{{title}}", page_title).replace("{{nav}}", nav(slug))
-                                 .replace("{{body}}", body).replace("{{rev}}", rev))
+                                 .replace("{{body}}", body).replace("{{pager}}", pager(slug)).replace("{{rev}}", rev)
+                                 .replace("{{bar-videos}}", current if slug == "videos" else "")
+                                 .replace("{{bar-docs}}", "" if slug == "videos" else current))
     return files, spec, text
 
 
@@ -164,14 +215,17 @@ def problems(files, spec, text):
             continue
         low = content.lower()
         out += [name + " uses a forbidden word: " + w for w in forbidden if w in low]
+        for src in re.findall(r'(?:src|poster)="([^"]+)"', content):
+            if not re.match(r"https?:|data:", src) and src not in files and not os.path.isfile(os.path.join(OUT, src)):
+                out.append(name + " uses a missing file: " + src)
         for href in re.findall(r'href="([^"]+)"', content):
             if re.match(r"https?:|mailto:", href):
                 continue
             target, _, anchor = href.partition("#")
             target = target or name
-            if target not in files:
+            if target not in files and not os.path.isfile(os.path.join(OUT, target)):
                 out.append(name + " links to a missing file: " + href)
-            elif anchor and 'id="' + anchor + '"' not in files[target]:
+            elif anchor and target in files and 'id="' + anchor + '"' not in files[target]:
                 out.append(name + " links to a missing anchor: " + href)
     for name, content in files.items():
         path = os.path.join(OUT, name)
@@ -188,9 +242,11 @@ def main(argv):
             print("FAIL " + p)
         print(("FAIL " if found else "PASS ") + str(len(files)) + " files, " + str(len(spec)) + " settings")
         return 1 if found else 0
-    if os.path.isdir(OUT):
-        shutil.rmtree(OUT)
-    os.makedirs(OUT)
+    os.makedirs(OUT, exist_ok=True)
+    for name in os.listdir(OUT):
+        path = os.path.join(OUT, name)
+        if os.path.isfile(path):
+            os.remove(path)
     for name, content in files.items():
         with open(os.path.join(OUT, name), "w", encoding="utf-8", newline="\n") as f:
             f.write(content)

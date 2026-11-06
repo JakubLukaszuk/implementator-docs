@@ -5,77 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily use - Implementator</title>
 <meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
+<header class="bar">
+  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <nav aria-label="Main">
+    <a class="wide-only" href="index.html#loop">The loop</a>
+    <a class="wide-only" href="index.html#proof">Proof</a>
+    <a href="videos.html">Videos</a>
+    <a href="overview.html" aria-current="page">Docs</a>
+  </nav>
+</header>
 <div class="shell">
-<header class="side">
-<a class="brand" href="index.html">Implementator</a>
+<aside class="side">
+<p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="index.html">Overview</a></li>
+<li><a href="overview.html">Overview</a></li>
 <li><a href="get-started.html">Get started</a></li>
 <li><a href="first-project.html">Your first project</a></li>
-<li><a href="configuration.html">Configuration</a></li>
 <li><a href="daily-use.html" aria-current="page">Daily use</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="videos.html">Videos</a></li>
 <li><a href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </nav>
-</header>
+</aside>
 <main id="content">
-<h1>Daily use</h1>
+<div class="page-hero">
+<p class="eyebrow">Daily use</p>
+<h1>A normal day with Implementator</h1>
 <p class="lead">Once a project is connected, most days come down to a few sentences. Your agent does not remember the framework between sessions, so begin each one by naming it.</p>
+</div>
 
-<h2 id="start">Start a session</h2>
-<pre><code>Use implementator. Where did we leave off?</code></pre>
+<figure class="film"><video controls preload="none" playsinline poster="img/posters/v4-one-change.jpg" src="videos/v4-one-change.webm" aria-label="One change, start to finish"></video><figcaption><b>One change, start to finish</b> Plan, code, tests, review, manual test, pull request, close.</figcaption></figure>
+
+<ol class="day">
+<li id="start">
+<h2>Start a session</h2>
+<p class="say">Use implementator. Where did we leave off?</p>
 <p>The agent loads the rules and shows every active workstream: its status, the newest journal entry, how old it is, and any pull request. If you added the pointer file during setup, a session opened in the notes repo finds its way there alone.</p>
-
-<h2 id="new">Start new work</h2>
-<pre><code>Use implementator. Add a --version flag to tally that prints the version from package.json.</code></pre>
-<p>Every change opens its own workstream and goes through the <a href="index.html#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
-
-<h2 id="tickets">Start from a ticket</h2>
-<pre><code>Start work on TAL-1.</code></pre>
+</li>
+<li id="new">
+<h2>Start new work</h2>
+<p class="say">Use implementator. Add a --version flag to tally that prints the version from package.json.</p>
+<p>Every change opens its own workstream and goes through the <a href="overview.html#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
+</li>
+<li id="tickets">
+<h2>Or start from a ticket</h2>
+<p class="say">Start work on TAL-1.</p>
 <p>If your agent has your tracker's connector, it reads the ticket and saves it unchanged as the brief, then writes the plan from it. Without a connector it asks you to paste the ticket. It never fills one in from the id.</p>
 <p>For Jira, add Atlassian's MCP server and sign in. You can grant read access only, which is all the pack needs:</p>
 <pre><code>claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp
 codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp</code></pre>
 <p>We tested this on a free Jira site in Claude Code. Each call uses Atlassian's Rovo credits.</p>
-
-<h2 id="resume">Continue later</h2>
+<figure class="film"><video controls preload="none" playsinline poster="img/posters/v8-jira-ticket.jpg" src="videos/v8-jira-ticket.webm" aria-label="Work from a Jira ticket"></video><figcaption><b>Work from a Jira ticket</b> The ticket is read, saved unchanged, and planned from.</figcaption></figure>
+</li>
+<li id="resume">
+<h2>Come back later</h2>
 <p>The journal is the memory. A new session reads it, finds the last plan and test record, and carries on. Short work and long work are handled the same way.</p>
-
-<h2 id="parallel">Several sessions at once</h2>
+</li>
+<li id="parallel">
+<h2>Run several sessions at once</h2>
 <p>One workstream takes one agent at a time. A session claims its workstream before working on it, and a second session gets a clear refusal instead of quietly sharing it. A claim from a crashed session expires after four hours. Different workstreams can run side by side.</p>
 <p>With <code>features.git.worktree</code> on, each workstream gets its own git worktree, so parallel changes to one repo stay apart.</p>
+</li>
+</ol>
 
-<h2 id="skills">The other skills</h2>
-<div class="wide"><table>
-<thead><tr><th>Say</th><th>What happens</th></tr></thead>
-<tbody>
-<tr><td>"Grill me on this plan."</td><td>Rounds of questions, each with a recommended answer, until nothing is assumed. The agent looks up facts itself and asks you for decisions.</td></tr>
-<tr><td>"Diagnose this flaky test."</td><td>It builds a check that fails on this bug first, reproduces and narrows it, tests one explanation at a time, and fixes it behind a regression test.</td></tr>
-<tr><td>"Mock up a few options for this page."</td><td>Temporary visual edits in the running app, a screenshot of each, then everything reverted. You pick one.</td></tr>
-<tr><td>"Add before and after screenshots to the PR."</td><td>Shots of the changed surface, at the viewports you set.</td></tr>
-<tr><td>"Check tally/cli is ready."</td><td>Runs preflight on its own.</td></tr>
-<tr><td>"Refresh the skills for tally/cli."</td><td>Rescans the repo and shows you what moved.</td></tr>
-</tbody>
-</table></div>
+<h2 id="skills">What else you can ask for</h2>
+<div class="ask-grid">
+<div><p class="say">Grill me on this plan.</p><p>Rounds of questions, each with a recommended answer, until nothing is assumed. The agent looks up facts itself and asks you for decisions.</p></div>
+<div><p class="say">Diagnose this flaky test.</p><p>It builds a check that fails on this bug first, reproduces and narrows it, tests one explanation at a time, and fixes it behind a regression test.</p></div>
+<div><p class="say">Mock up a few options for this page.</p><p>Temporary visual edits in the running app, a screenshot of each, then everything reverted. You pick one.</p></div>
+<div><p class="say">Add before and after screenshots to the PR.</p><p>Shots of the changed surface, at the viewports you set.</p></div>
+<div><p class="say">Check tally/cli is ready.</p><p>Runs preflight on its own.</p></div>
+<div><p class="say">Refresh the skills for tally/cli.</p><p>Rescans the repo and shows you what moved.</p></div>
+</div>
+
+<figure class="film"><video controls preload="none" playsinline poster="img/posters/v9-mockup-to-code.jpg" src="videos/v9-mockup-to-code.webm" aria-label="From a mockup to shipped code"></video><figcaption><b>From a mockup to shipped code</b> Options on the running page, a pick, then the whole loop.</figcaption></figure>
 
 <h2 id="notes">Looking after the notes</h2>
-<ul>
+<ul class="checks">
 <li>Sessions end with a report of what is uncommitted in the notes repo and a suggested commit command. Run it, or tell the agent to commit the notes.</li>
 <li>Commit the notes after a close. An archive that exists only in your working folder is not safe yet.</li>
 <li>Give the notes repo a private remote. Nothing else backs it up.</li>
 </ul>
 
-<p>Next: <a href="troubleshooting.html">troubleshooting</a>.</p>
 
-<footer>
-<p>Settings and presets on these pages are generated from the source at commit <code>dd80a56</code>.</p>
-</footer>
+<nav class="pager" aria-label="Pages"><a class="prev" href="first-project.html"><span>Previous</span>Your first project</a><a class="next" href="configuration.html"><span>Next</span>Configuration</a></nav>
 </main>
 </div>
+<footer class="foot">
+<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+</footer>
 </body>
 </html>

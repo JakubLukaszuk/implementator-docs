@@ -4,91 +4,130 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Implementator</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="A skill pack that puts every code change through one loop in Claude Code or Codex: a plan you approve, tests, a review, your manual test, and a written record.">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
-<a class="skip" href="#content">Skip to the content</a>
-<div class="shell">
-<header class="side">
-<a class="brand" href="index.html">Implementator</a>
-<nav aria-label="Documentation">
-<ul>
-<li><a href="index.html" aria-current="page">Overview</a></li>
-<li><a href="get-started.html">Get started</a></li>
-<li><a href="first-project.html">Your first project</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="daily-use.html">Daily use</a></li>
-<li><a href="troubleshooting.html">Troubleshooting</a></li>
-</ul>
-</nav>
+<header class="bar">
+  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <nav aria-label="Main">
+    <a class="wide-only" href="#loop">The loop</a>
+    <a class="wide-only" href="#proof">Proof</a>
+    <a href="videos.html">Videos</a>
+    <a href="overview.html">Docs</a>
+  </nav>
 </header>
-<main id="content">
-<h1>Implementator</h1>
-<p class="lead">A skill pack that makes your coding agent work the same disciplined way on every repo: a plan you approve, tests, a review, a manual test, and a written record of all of it.</p>
 
-<p>Implementator runs in Claude Code and Codex CLI. It is delivered through the Agensi store over MCP, so nothing is installed: your agent reads the skills live, and everything it writes goes into a separate notes repo that belongs to you.</p>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="kicker">A skill pack for Claude Code and Codex</p>
+    <h1>Your coding agent, <em>with a process.</em></h1>
+    <p class="lead">Every change gets a plan you approve, real tests, independent review and your own manual test. Then a written record, in notes that stay yours.</p>
+    <div class="cta">
+      <a class="btn primary" href="get-started.html">Get started</a>
+      <a class="btn" href="videos.html">Watch it work</a>
+    </div>
+  </div>
+  <div class="term" aria-label="A replay of a real run">
+    <div class="term-bar"><i></i><i></i><i></i><span>replay of a real run</span></div>
+    <video autoplay muted loop playsinline preload="metadata" poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm"></video>
+  </div>
+</section>
 
-<h2 id="loop">The loop</h2>
-<p>Every change goes through the same stages, in this order. The agent does the work and stops at the stages marked for you.</p>
-<ol class="loop">
-<li class="you"><b>Plan</b>The agent writes it. You approve it before any code.</li>
-<li><b>Code</b>Written to the repo's own conventions.</li>
-<li><b>Tests and checks</b>Your test, lint and typecheck commands.</li>
-<li><b>Self-test</b>The agent drives the real app or CLI, unhappy paths too.</li>
-<li><b>Review</b>Severity-ranked. Every finding gets resolved.</li>
-<li class="you"><b>Manual test</b>The agent writes the steps. You run them.</li>
-<li class="you"><b>Commit</b>Only after you confirm. You can keep this step for yourself.</li>
-<li class="you"><b>Close</b>When you say so, the work is archived with its record.</li>
-</ol>
-<p class="key"><span>Orange</span> marks a stage that waits for you.</p>
+<section class="loop" id="loop">
+  <div class="wrap">
+    <p class="kicker">The loop</p>
+    <h2>Eight stages. Four of them wait for you.</h2>
+    <p class="sub">The same path for every change, on every repo. Pick a stage to see what happens there.</p>
+    <ol class="rail" id="rail"></ol>
+    <div class="stage-card" id="stage-card" aria-live="polite">
+      <span class="tag" id="stage-tag"></span>
+      <h3 id="stage-title"></h3>
+      <p id="stage-text"></p>
+    </div>
+  </div>
+</section>
 
-<h2 id="why">Why people use it</h2>
-<ul>
-<li><strong>The agent stops guessing your stack.</strong> It scans each repo and writes skills for that repo: how to code, test, review and commit there, each rule tied to a file it found.</li>
-<li><strong>Work survives the session.</strong> Plans, reviews, test records and a dated journal live in your notes repo, so the next session picks up where this one stopped.</li>
-<li><strong>Many repos, one way of working.</strong> Connect as many as you like. Each has its own settings on top of shared defaults.</li>
-<li><strong>Settings change how a stage runs, never whether it runs.</strong> Who commits, which browser, which model tier: all yours to set. The plan approval, the review and the manual test cannot be switched off.</li>
-</ul>
+<section class="proof" id="proof">
+  <div class="wrap">
+    <p class="kicker">Proof, not promises</p>
+    <h2>What the loop caught on a demo repo.</h2>
+    <p class="sub">Small changes to a small project, and real findings from the reviewers that came after the agent that wrote the code.</p>
+    <div class="stats reveal">
+      <div><b data-count="4">4</b><span>test gaps found in a three-line feature, after its author had called it ready</span></div>
+      <div><b data-from="75" data-count="0" data-unit="px">0px</b><span>of layout jump on a slow load, down from 75px, once review reproduced it</span></div>
+      <div><b data-count="8">8</b><span>independent reviewers in a full round, one lens each, none seeing the others' findings</span></div>
+    </div>
+  </div>
+</section>
 
-<h2 id="pack">What is in the pack</h2>
-<p>Thirteen skills, a set of rules, and small scripts for the steps that should not depend on an agent's memory. You do not need to memorise any of this: say what you want and the agent picks the skill.</p>
-<div class="wide"><table>
-<thead><tr><th>Skill</th><th>What it does</th></tr></thead>
-<tbody>
-<tr><td><code>implementator</code></td><td>Explains the framework and routes you to the right step.</td></tr>
-<tr><td><code>implementator-setup</code></td><td>Creates the notes repo and asks six questions about how you work.</td></tr>
-<tr><td><code>implementator-connect-project</code></td><td>Connects a code repo: type, commands, how to test it.</td></tr>
-<tr><td><code>implementator-generate-skills</code></td><td>Writes that repo's own coding, testing, review and commit skills from what it finds.</td></tr>
-<tr><td><code>implementator-preflight</code></td><td>Checks a project is ready before work starts.</td></tr>
-<tr><td><code>implementator-new-initiative</code></td><td>Opens a new feature or ticket in the notes.</td></tr>
-<tr><td><code>implementator-implement</code></td><td>Runs the loop above.</td></tr>
-<tr><td><code>implementator-grill</code></td><td>Questions an unclear plan until every decision is settled.</td></tr>
-<tr><td><code>implementator-diagnose</code></td><td>Works a hard bug: a failing check first, then the cause, then a fix behind a test.</td></tr>
-<tr><td><code>implementator-mockup</code></td><td>Tries visual options in the running app, shows you screenshots, reverts everything.</td></tr>
-<tr><td><code>implementator-pr-screenshots</code></td><td>Before and after shots for a pull request.</td></tr>
-<tr><td><code>implementator-archive</code></td><td>Closes finished work and archives it with its path kept.</td></tr>
-<tr><td><code>implementator-configure</code></td><td>Shows and changes settings in plain language, and applies presets.</td></tr>
-</tbody>
-</table></div>
+<section class="mock">
+  <div class="wrap two">
+    <div class="reveal">
+      <p class="kicker">Mockups</p>
+      <h2>See it on your real app before anything ships.</h2>
+      <p class="sub">The agent tries options on the running page, screenshots each one, and puts the code back exactly as it was. You pick. Your pick goes through the whole loop.</p>
+      <div class="thumbs">
+        <figure><div><img src="img/option-a.png" alt="Option A" loading="lazy"></div><figcaption>Option A</figcaption></figure>
+        <figure><div><img src="img/option-b.png" alt="Option B" loading="lazy"></div><figcaption>Option B</figcaption></figure>
+        <figure class="picked"><div><img src="img/option-c.png" alt="Option C" loading="lazy"></div><figcaption>Option C, picked</figcaption></figure>
+      </div>
+    </div>
+    <div class="compare reveal" id="compare">
+      <img src="img/page-after.png" alt="The page after the change, with a dark result band above the text box" loading="lazy">
+      <div class="before" id="before"><img src="img/page-before.png" alt="The page before the change" loading="lazy"></div>
+      <span class="label l">Before</span><span class="label r">After</span>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after" id="split">
+      <div class="handle" id="handle"></div>
+    </div>
+  </div>
+</section>
 
-<h2 id="yours">What stays yours</h2>
-<p>Everything the skills generate is your own output: the notes repo, plans, journals, test records and the per-repo skills. The pack itself is licensed for live use, so your agent reads it from the store each time and does not save a copy.</p>
+<section class="ship">
+  <div class="wrap two flip">
+    <figure class="shot reveal"><img src="img/pr-merged.png" alt="A merged pull request on GitHub, opened by the agent" loading="lazy"></figure>
+    <div class="reveal">
+      <p class="kicker">Ticket to merge</p>
+      <h2>From Jira to a merged PR, with a paper trail.</h2>
+      <ol class="flow">
+        <li><b>Read the ticket.</b> Saved unchanged as the brief, so the plan answers what was asked.</li>
+        <li><b>Open a draft PR.</b> Linked to the ticket, in your repo's commit style.</li>
+        <li><b>Watch CI.</b> Red goes back through the loop.</li>
+        <li><b>You merge.</b> The agent never does. It finds the merge and archives the work.</li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-<h2 id="limits">What to expect, honestly</h2>
-<ul>
-<li><strong>The rules are instructions, not locks.</strong> A local install could use git hooks to enforce them. A live pack cannot. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk, but an agent can still drift, so read what it reports. If it skips something, <a href="troubleshooting.html#skipped">here is what to do</a>.</li>
-<li><strong>Tested on a small scale.</strong> We ran it from setup to archive in Claude Code and in Codex CLI on Windows, on a small Node command-line project, with the store's delivery emulated. Linux, macOS and other agents have not been tested yet.</li>
-<li><strong>It costs real usage.</strong> One full run from setup to a closed feature used about $3.70 on Claude Code. A review on a larger change costs more. The <a href="configuration.html#models">model settings</a> are how you tune this.</li>
-<li><strong>Codex on Windows has one limit you will meet.</strong> Its sandbox stops Node from starting child processes, so you run Node test suites yourself. <a href="get-started.html#codex-windows">Details</a>.</li>
-</ul>
+<section class="pack">
+  <div class="wrap">
+    <h2>Fits how you already work.</h2>
+    <div class="cards reveal">
+      <a href="first-project.html"><b>Skills written for each repo</b><span>It scans your code and writes how to build, test, review and commit there. Each rule ties to a file it found.</span></a>
+      <a href="configuration.html"><b>63 settings, 8 presets</b><span>Who commits, which browser, which model tier. Settings change how a stage runs, never whether it runs.</span></a>
+      <a href="daily-use.html"><b>Work that survives the session</b><span>Plans, reviews and a dated journal live in a notes repo that belongs to you.</span></a>
+      <a href="overview.html#limits"><b>Honest about its limits</b><span>The rules are instructions, not locks. Read what it can and cannot promise.</span></a>
+    </div>
+  </div>
+</section>
 
-<p>Next: <a href="get-started.html">get started</a>.</p>
-
-<footer>
-<p>Settings and presets on these pages are generated from the source at commit <code>dd80a56</code>.</p>
-</footer>
+<section class="end">
+  <div class="wrap">
+    <h2>Give your agent a process.</h2>
+    <div class="cta">
+      <a class="btn primary" href="get-started.html">Get started</a>
+      <a class="btn" href="https://www.agensi.io/creators/nihillon">Agensi store</a>
+    </div>
+  </div>
+</section>
 </main>
-</div>
+
+<footer class="foot">
+  <p>The numbers come from recorded runs on the public <a href="https://github.com/JakubLukaszuk/tally-demo">tally-demo</a> repo, before store release, with delivery emulated.</p>
+</footer>
+<script src="home.js" defer></script>
 </body>
 </html>

@@ -5,27 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get started - Implementator</title>
 <meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
+<header class="bar">
+  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <nav aria-label="Main">
+    <a class="wide-only" href="index.html#loop">The loop</a>
+    <a class="wide-only" href="index.html#proof">Proof</a>
+    <a href="videos.html">Videos</a>
+    <a href="overview.html" aria-current="page">Docs</a>
+  </nav>
+</header>
 <div class="shell">
-<header class="side">
-<a class="brand" href="index.html">Implementator</a>
+<aside class="side">
+<p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="index.html">Overview</a></li>
+<li><a href="overview.html">Overview</a></li>
 <li><a href="get-started.html" aria-current="page">Get started</a></li>
 <li><a href="first-project.html">Your first project</a></li>
-<li><a href="configuration.html">Configuration</a></li>
 <li><a href="daily-use.html">Daily use</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="videos.html">Videos</a></li>
 <li><a href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </nav>
-</header>
+</aside>
 <main id="content">
+<div class="page-hero">
+<p class="eyebrow">Docs</p>
 <h1>Get started</h1>
 <p class="lead">Connect your agent to the store, then ask it to set implementator up. The first run takes a few minutes and a handful of answers.</p>
+</div>
 
 <h2 id="need">What you need</h2>
 <ul>
@@ -97,12 +112,12 @@ We tested this with <code>codex exec</code>. Do not turn the sandbox off to get 
 <li><strong><code>gh</code> cannot read your sign-in,</strong> so it may say the token is invalid when it is not. The pack reports this as a warning, not a failure.</li>
 </ul>
 
-<p>Next: <a href="first-project.html">your first project</a>.</p>
 
-<footer>
-<p>Settings and presets on these pages are generated from the source at commit <code>dd80a56</code>.</p>
-</footer>
+<nav class="pager" aria-label="Pages"><a class="prev" href="overview.html"><span>Previous</span>Overview</a><a class="next" href="first-project.html"><span>Next</span>Your first project</a></nav>
 </main>
 </div>
+<footer class="foot">
+<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+</footer>
 </body>
 </html>

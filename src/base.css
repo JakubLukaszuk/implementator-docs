@@ -1,0 +1,47 @@
+/* Shared by the home page and the docs: colours, the top bar, buttons and the footer. */
+:root {
+  --ink: #0b0d12;
+  --ink-2: #12151d;
+  --ink-3: #1a1f2a;
+  --line: #2a3140;
+  --text: #eef1f6;
+  --dim: #9aa4b5;
+  --body: #c5ccd8;
+  --blue: #2f6fed;
+  --blue-2: #7fb0ff;
+  --you: #ffb36b;
+  --you-bg: #33261a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: var(--ink); color: var(--text); font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; }
+a { color: var(--blue-2); }
+img, video { display: block; max-width: 100%; }
+
+.bar { align-items: center; backdrop-filter: blur(12px); background: rgba(11, 13, 18, 0.78); border-bottom: 1px solid rgba(255, 255, 255, 0.07); display: flex; gap: 20px; justify-content: space-between; padding: 12px 24px; position: sticky; top: 0; z-index: 10; }
+.mark { align-items: center; color: var(--text); display: flex; font-weight: 700; gap: 10px; text-decoration: none; }
+.mark img { border-radius: 7px; }
+.bar nav { align-items: center; display: flex; gap: 22px; }
+.bar nav a { color: var(--dim); font-size: 15.5px; text-decoration: none; }
+.bar nav a:hover, .bar nav a[aria-current] { color: var(--text); }
+
+.btn { border: 1px solid var(--line); border-radius: 10px; color: var(--text); display: inline-block; font-weight: 600; padding: 13px 24px; text-decoration: none; transition: transform 0.15s, border-color 0.15s; }
+.btn:hover { border-color: var(--blue-2); transform: translateY(-2px); }
+.btn.primary { background: var(--blue); border-color: var(--blue); box-shadow: 0 10px 34px rgba(47, 111, 237, 0.45); }
+
+.foot { border-top: 1px solid var(--line); color: var(--dim); font-size: 14.5px; padding: 20px 24px; text-align: center; }
+.foot p { margin: 0; }
+
+@media (max-width: 940px) {
+  body { font-size: 17px; }
+  .bar { padding: 10px 16px; }
+  .bar nav { gap: 14px; }
+  .bar nav a { font-size: 14.5px; }
+}
+@media (max-width: 420px) {
+  .bar nav .wide-only { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

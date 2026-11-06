@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview - Implementator</title>
+<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to the content</a>
+<header class="bar">
+  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <nav aria-label="Main">
+    <a class="wide-only" href="index.html#loop">The loop</a>
+    <a class="wide-only" href="index.html#proof">Proof</a>
+    <a href="videos.html">Videos</a>
+    <a href="overview.html" aria-current="page">Docs</a>
+  </nav>
+</header>
+<div class="shell">
+<aside class="side">
+<p>Docs</p>
+<nav aria-label="Documentation">
+<ul>
+<li><a href="overview.html" aria-current="page">Overview</a></li>
+<li><a href="get-started.html">Get started</a></li>
+<li><a href="first-project.html">Your first project</a></li>
+<li><a href="daily-use.html">Daily use</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="videos.html">Videos</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</nav>
+</aside>
+<main id="content">
+<div class="page-hero">
+<p class="eyebrow">Docs</p>
+<h1>Implementator</h1>
+<p class="lead">A skill pack that makes your coding agent work the same disciplined way on every repo: a plan you approve, tests, a review, a manual test, and a written record of all of it.</p>
+</div>
+
+<p>Implementator runs in Claude Code and Codex CLI. It is delivered through the Agensi store over MCP, so nothing is installed: your agent reads the skills live, and everything it writes goes into a separate notes repo that belongs to you.</p>
+
+<h2 id="loop">The loop</h2>
+<p>Every change goes through the same stages, in this order. The agent does the work and stops at the stages marked for you.</p>
+<ol class="loop">
+<li class="you"><b>Plan</b>The agent writes it. You approve it before any code.</li>
+<li><b>Code</b>Written to the repo's own conventions.</li>
+<li><b>Tests and checks</b>Your test, lint and typecheck commands.</li>
+<li><b>Self-test</b>The agent drives the real app or CLI, unhappy paths too.</li>
+<li><b>Review</b>Severity-ranked. Every finding gets resolved.</li>
+<li class="you"><b>Manual test</b>The agent writes the steps. You run them.</li>
+<li class="you"><b>Commit</b>Only after you confirm. You can keep this step for yourself.</li>
+<li class="you"><b>Close</b>When you say so, the work is archived with its record.</li>
+</ol>
+<p class="key"><span>Orange</span> marks a stage that waits for you.</p>
+
+<figure class="film"><video controls preload="none" playsinline poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm" aria-label="What Implementator does"></video><figcaption><b>What Implementator does</b> A real change, from a Jira ticket to a merged pull request.</figcaption></figure>
+
+<h2 id="why">Why people use it</h2>
+<ul>
+<li><strong>The agent stops guessing your stack.</strong> It scans each repo and writes skills for that repo: how to code, test, review and commit there, each rule tied to a file it found.</li>
+<li><strong>Work survives the session.</strong> Plans, reviews, test records and a dated journal live in your notes repo, so the next session picks up where this one stopped.</li>
+<li><strong>Many repos, one way of working.</strong> Connect as many as you like. Each has its own settings on top of shared defaults.</li>
+<li><strong>Settings change how a stage runs, never whether it runs.</strong> Who commits, which browser, which model tier: all yours to set. The plan approval, the review and the manual test cannot be switched off.</li>
+</ul>
+
+<h2 id="pack">What is in the pack</h2>
+<p>Thirteen skills, a set of rules, and small scripts for the steps that should not depend on an agent's memory. You do not need to memorise any of this: say what you want and the agent picks the skill.</p>
+<div class="wide"><table>
+<thead><tr><th>Skill</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>implementator</code></td><td>Explains the framework and routes you to the right step.</td></tr>
+<tr><td><code>implementator-setup</code></td><td>Creates the notes repo and asks six questions about how you work.</td></tr>
+<tr><td><code>implementator-connect-project</code></td><td>Connects a code repo: type, commands, how to test it.</td></tr>
+<tr><td><code>implementator-generate-skills</code></td><td>Writes that repo's own coding, testing, review and commit skills from what it finds.</td></tr>
+<tr><td><code>implementator-preflight</code></td><td>Checks a project is ready before work starts.</td></tr>
+<tr><td><code>implementator-new-initiative</code></td><td>Opens a new feature or ticket in the notes.</td></tr>
+<tr><td><code>implementator-implement</code></td><td>Runs the loop above.</td></tr>
+<tr><td><code>implementator-grill</code></td><td>Questions an unclear plan until every decision is settled.</td></tr>
+<tr><td><code>implementator-diagnose</code></td><td>Works a hard bug: a failing check first, then the cause, then a fix behind a test.</td></tr>
+<tr><td><code>implementator-mockup</code></td><td>Tries visual options in the running app, shows you screenshots, reverts everything.</td></tr>
+<tr><td><code>implementator-pr-screenshots</code></td><td>Before and after shots for a pull request.</td></tr>
+<tr><td><code>implementator-archive</code></td><td>Closes finished work and archives it with its path kept.</td></tr>
+<tr><td><code>implementator-configure</code></td><td>Shows and changes settings in plain language, and applies presets.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="yours">What stays yours</h2>
+<p>Everything the skills generate is your own output: the notes repo, plans, journals, test records and the per-repo skills. The pack itself is licensed for live use, so your agent reads it from the store each time and does not save a copy.</p>
+
+<h2 id="limits">What to expect, honestly</h2>
+<ul>
+<li><strong>The rules are instructions, not locks.</strong> A local install could use git hooks to enforce them. A live pack cannot. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk, but an agent can still drift, so read what it reports. If it skips something, <a href="troubleshooting.html#skipped">here is what to do</a>.</li>
+<li><strong>Tested on a small scale.</strong> We ran it from setup to archive in Claude Code and in Codex CLI on Windows, on a small Node command-line project, with the store's delivery emulated. Linux, macOS and other agents have not been tested yet.</li>
+<li><strong>It costs real usage.</strong> One full run from setup to a closed feature used about $3.70 on Claude Code. A review on a larger change costs more. The <a href="configuration.html#models">model settings</a> are how you tune this.</li>
+<li><strong>Codex on Windows has one limit you will meet.</strong> Its sandbox stops Node from starting child processes, so you run Node test suites yourself. <a href="get-started.html#codex-windows">Details</a>.</li>
+</ul>
+
+
+<nav class="pager" aria-label="Pages"><a class="next" href="get-started.html"><span>Next</span>Get started</a></nav>
+</main>
+</div>
+<footer class="foot">
+<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+</footer>
+</body>
+</html>

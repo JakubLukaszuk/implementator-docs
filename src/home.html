@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementator</title>
+<meta name="description" content="A skill pack that puts every code change through one loop in Claude Code or Codex: a plan you approve, tests, a review, your manual test, and a written record.">
+<link rel="icon" href="img/logo.png">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<header class="bar">
+  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <nav aria-label="Main">
+    <a class="wide-only" href="#loop">The loop</a>
+    <a class="wide-only" href="#proof">Proof</a>
+    <a href="videos.html">Videos</a>
+    <a href="overview.html">Docs</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="kicker">A skill pack for Claude Code and Codex</p>
+    <h1>Your coding agent, <em>with a process.</em></h1>
+    <p class="lead">Every change gets a plan you approve, real tests, independent review and your own manual test. Then a written record, in notes that stay yours.</p>
+    <div class="cta">
+      <a class="btn primary" href="get-started.html">Get started</a>
+      <a class="btn" href="videos.html">Watch it work</a>
+    </div>
+  </div>
+  <div class="term" aria-label="A replay of a real run">
+    <div class="term-bar"><i></i><i></i><i></i><span>replay of a real run</span></div>
+    <video autoplay muted loop playsinline preload="metadata" poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm"></video>
+  </div>
+</section>
+
+<section class="loop" id="loop">
+  <div class="wrap">
+    <p class="kicker">The loop</p>
+    <h2>Eight stages. Four of them wait for you.</h2>
+    <p class="sub">The same path for every change, on every repo. Pick a stage to see what happens there.</p>
+    <ol class="rail" id="rail"></ol>
+    <div class="stage-card" id="stage-card" aria-live="polite">
+      <span class="tag" id="stage-tag"></span>
+      <h3 id="stage-title"></h3>
+      <p id="stage-text"></p>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <p class="kicker">Proof, not promises</p>
+    <h2>What the loop caught on a demo repo.</h2>
+    <p class="sub">Small changes to a small project, and real findings from the reviewers that came after the agent that wrote the code.</p>
+    <div class="stats reveal">
+      <div><b data-count="4">4</b><span>test gaps found in a three-line feature, after its author had called it ready</span></div>
+      <div><b data-from="75" data-count="0" data-unit="px">0px</b><span>of layout jump on a slow load, down from 75px, once review reproduced it</span></div>
+      <div><b data-count="8">8</b><span>independent reviewers in a full round, one lens each, none seeing the others' findings</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="mock">
+  <div class="wrap two">
+    <div class="reveal">
+      <p class="kicker">Mockups</p>
+      <h2>See it on your real app before anything ships.</h2>
+      <p class="sub">The agent tries options on the running page, screenshots each one, and puts the code back exactly as it was. You pick. Your pick goes through the whole loop.</p>
+      <div class="thumbs">
+        <figure><div><img src="img/option-a.png" alt="Option A" loading="lazy"></div><figcaption>Option A</figcaption></figure>
+        <figure><div><img src="img/option-b.png" alt="Option B" loading="lazy"></div><figcaption>Option B</figcaption></figure>
+        <figure class="picked"><div><img src="img/option-c.png" alt="Option C" loading="lazy"></div><figcaption>Option C, picked</figcaption></figure>
+      </div>
+    </div>
+    <div class="compare reveal" id="compare">
+      <img src="img/page-after.png" alt="The page after the change, with a dark result band above the text box" loading="lazy">
+      <div class="before" id="before"><img src="img/page-before.png" alt="The page before the change" loading="lazy"></div>
+      <span class="label l">Before</span><span class="label r">After</span>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after" id="split">
+      <div class="handle" id="handle"></div>
+    </div>
+  </div>
+</section>
+
+<section class="ship">
+  <div class="wrap two flip">
+    <figure class="shot reveal"><img src="img/pr-merged.png" alt="A merged pull request on GitHub, opened by the agent" loading="lazy"></figure>
+    <div class="reveal">
+      <p class="kicker">Ticket to merge</p>
+      <h2>From Jira to a merged PR, with a paper trail.</h2>
+      <ol class="flow">
+        <li><b>Read the ticket.</b> Saved unchanged as the brief, so the plan answers what was asked.</li>
+        <li><b>Open a draft PR.</b> Linked to the ticket, in your repo's commit style.</li>
+        <li><b>Watch CI.</b> Red goes back through the loop.</li>
+        <li><b>You merge.</b> The agent never does. It finds the merge and archives the work.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="pack">
+  <div class="wrap">
+    <h2>Fits how you already work.</h2>
+    <div class="cards reveal">
+      <a href="first-project.html"><b>Skills written for each repo</b><span>It scans your code and writes how to build, test, review and commit there. Each rule ties to a file it found.</span></a>
+      <a href="configuration.html"><b>{{n-settings}} settings, {{n-presets}} presets</b><span>Who commits, which browser, which model tier. Settings change how a stage runs, never whether it runs.</span></a>
+      <a href="daily-use.html"><b>Work that survives the session</b><span>Plans, reviews and a dated journal live in a notes repo that belongs to you.</span></a>
+      <a href="overview.html#limits"><b>Honest about its limits</b><span>The rules are instructions, not locks. Read what it can and cannot promise.</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <h2>Give your agent a process.</h2>
+    <div class="cta">
+      <a class="btn primary" href="get-started.html">Get started</a>
+      <a class="btn" href="https://www.agensi.io/creators/nihillon">Agensi store</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <p>The numbers come from recorded runs on the public <a href="https://github.com/JakubLukaszuk/tally-demo">tally-demo</a> repo, before store release, with delivery emulated.</p>
+</footer>
+<script src="home.js" defer></script>
+</body>
+</html>
