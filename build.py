@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Implementator Lite documentation into docs/, which GitHub Pages serves.
+"""Build the Implementator documentation into docs/, which GitHub Pages serves.
 
 The prose lives in src/. The settings tables and the presets are generated from the implementator
 repo itself, so a value on the Configuration page is the value the pack ships.
@@ -143,7 +143,7 @@ def build():
         body = (body.replace("{{settings}}", settings_tables(spec, text))
                 .replace("{{stages}}", stage_table(spec, text))
                 .replace("{{presets}}", presets_table()))
-        page_title = "Implementator Lite" if slug == "index" else title + " - Implementator Lite"
+        page_title = "Implementator" if slug == "index" else title + " - Implementator"
         files[slug + ".html"] = (layout.replace("{{title}}", page_title).replace("{{nav}}", nav(slug))
                                  .replace("{{body}}", body).replace("{{rev}}", rev))
     return files, spec, text

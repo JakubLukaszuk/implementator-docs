@@ -53,7 +53,7 @@
           "when": "the remote's address does not show the host, such as a self-hosted server."
         },
         "platform.tracker": {
-          "what": "The issue tracker your ticket ids come from. <code>none</code> leaves ids as plain text.",
+          "what": "The issue tracker your ticket ids come from. <code>none</code> leaves ids as plain text. This setting makes links; reading a ticket also needs the tracker's connector in your agent.",
           "when": "your branch or initiative names carry ids like ABC-123."
         },
         "platform.ticketPattern": {

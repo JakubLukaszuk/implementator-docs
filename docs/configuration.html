@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Configuration - Implementator Lite</title>
-<meta name="description" content="Documentation for Implementator Lite, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
+<title>Configuration - Implementator</title>
+<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
 <div class="shell">
 <header class="side">
-<a class="brand" href="index.html">Implementator <span>Lite</span></a>
+<a class="brand" href="index.html">Implementator</a>
 <nav aria-label="Documentation">
 <ul>
 <li><a href="index.html">Overview</a></li>
@@ -69,7 +69,7 @@ Use the team preset for all projects.</code></pre>
 <article class="setting" id="features.postPush.flakePatterns"><h4><code>features.postPush.flakePatterns</code></h4><p>Patterns for failures you know to be flaky. A match is labelled as a known flake and the rerun command is suggested. Nothing is rerun by itself, and an unmatched failure still counts as a real one.</p><p><b>Change it when:</b> one CI job fails at random and wastes your time.</p><dl><dt>Values</dt><dd>a list</dd><dt>Default</dt><dd>not set</dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;features&quot;: {&quot;postPush&quot;: {&quot;flakePatterns&quot;: &quot;...&quot;}}}</code></pre></article>
 <h3 id="s-platform">Host and tracker</h3>
 <article class="setting" id="platform.host"><h4><code>platform.host</code></h4><p>Where the code is hosted, which decides the CLI used for pull requests. <code>auto</code> reads it from the repo's <code>origin</code> remote.</p><p><b>Change it when:</b> the remote's address does not show the host, such as a self-hosted server.</p><dl><dt>Values</dt><dd><code>auto</code> <code>github</code> <code>gitlab</code> <code>bitbucket</code> <code>azure-devops</code> <code>gitea</code> <code>other</code> <code>none</code></dd><dt>Default</dt><dd><code>auto</code></dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;platform&quot;: {&quot;host&quot;: &quot;auto&quot;}}</code></pre></article>
-<article class="setting" id="platform.tracker"><h4><code>platform.tracker</code></h4><p>The issue tracker your ticket ids come from. <code>none</code> leaves ids as plain text.</p><p><b>Change it when:</b> your branch or initiative names carry ids like ABC-123.</p><dl><dt>Values</dt><dd><code>none</code> <code>linear</code> <code>jira</code> <code>github</code> <code>gitlab</code> <code>azure-boards</code> <code>other</code></dd><dt>Default</dt><dd><code>none</code></dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;platform&quot;: {&quot;tracker&quot;: &quot;none&quot;}}</code></pre></article>
+<article class="setting" id="platform.tracker"><h4><code>platform.tracker</code></h4><p>The issue tracker your ticket ids come from. <code>none</code> leaves ids as plain text. This setting makes links; reading a ticket also needs the tracker's connector in your agent.</p><p><b>Change it when:</b> your branch or initiative names carry ids like ABC-123.</p><dl><dt>Values</dt><dd><code>none</code> <code>linear</code> <code>jira</code> <code>github</code> <code>gitlab</code> <code>azure-boards</code> <code>other</code></dd><dt>Default</dt><dd><code>none</code></dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;platform&quot;: {&quot;tracker&quot;: &quot;none&quot;}}</code></pre></article>
 <article class="setting" id="platform.ticketPattern"><h4><code>platform.ticketPattern</code></h4><p>A regular expression for your ticket ids, such as <code>ACME-\d+</code>.</p><p><b>Change it when:</b> your ids do not look like ABC-123.</p><dl><dt>Values</dt><dd>text</dd><dt>Default</dt><dd>not set</dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;platform&quot;: {&quot;ticketPattern&quot;: &quot;...&quot;}}</code></pre></article>
 <article class="setting" id="platform.ticketUrl"><h4><code>platform.ticketUrl</code></h4><p>The address of a ticket, with <code>{id}</code> where the id goes.</p><p><b>Change it when:</b> you set a tracker and want ids turned into links.</p><dl><dt>Values</dt><dd>text</dd><dt>Default</dt><dd>not set</dd><dt>Applies to</dt><dd>all projects, or one</dd></dl><pre><code>{&quot;platform&quot;: {&quot;ticketUrl&quot;: &quot;...&quot;}}</code></pre></article>
 <h3 id="s-verify">How a change is verified</h3>
@@ -118,7 +118,7 @@ Use the team preset for all projects.</code></pre>
 </table></div>
 
 <footer>
-<p>Settings and presets on these pages are generated from the source at commit <code>1ec1d54</code>.</p>
+<p>Settings and presets on these pages are generated from the source at commit <code>dd80a56</code>.</p>
 </footer>
 </main>
 </div>

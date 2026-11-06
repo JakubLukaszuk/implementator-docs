@@ -9,6 +9,14 @@
 <pre><code>Use implementator. Add a --version flag to tally that prints the version from package.json.</code></pre>
 <p>Every change opens its own workstream and goes through the <a href="index.html#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
 
+<h2 id="tickets">Start from a ticket</h2>
+<pre><code>Start work on TAL-1.</code></pre>
+<p>If your agent has your tracker's connector, it reads the ticket and saves it unchanged as the brief, then writes the plan from it. Without a connector it asks you to paste the ticket. It never fills one in from the id.</p>
+<p>For Jira, add Atlassian's MCP server and sign in. You can grant read access only, which is all the pack needs:</p>
+<pre><code>claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp
+codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp</code></pre>
+<p>We tested this on a free Jira site in Claude Code. Each call uses Atlassian's Rovo credits.</p>
+
 <h2 id="resume">Continue later</h2>
 <p>The journal is the memory. A new session reads it, finds the last plan and test record, and carries on. Short work and long work are handled the same way.</p>
 
