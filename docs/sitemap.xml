@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://implementator.io/</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/overview</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/get-started</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/first-project</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/daily-use</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/configuration</loc><lastmod>2026-11-07</lastmod>
+</url>
+<url><loc>https://implementator.io/videos</loc><lastmod>2026-11-07</lastmod>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v1-what-it-does.jpg</video:thumbnail_loc><video:title>What Implementator does</video:title><video:description>A real change, from a Jira ticket to a merged pull request.</video:description><video:content_loc>https://implementator.io/videos/v1-what-it-does.webm</video:content_loc><video:duration>61</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v2-set-it-up.jpg</video:thumbnail_loc><video:title>Set it up</video:title><video:description>The notes repo, the pointer file and the six questions.</video:description><video:content_loc>https://implementator.io/videos/v2-set-it-up.webm</video:content_loc><video:duration>95</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v3-connect-a-repo.jpg</video:thumbnail_loc><video:title>Connect a repo</video:title><video:description>What the agent detects, and the skills it proposes.</video:description><video:content_loc>https://implementator.io/videos/v3-connect-a-repo.webm</video:content_loc><video:duration>111</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v4-one-change.jpg</video:thumbnail_loc><video:title>One change, start to finish</video:title><video:description>Plan, code, tests, review, manual test, pull request, close.</video:description><video:content_loc>https://implementator.io/videos/v4-one-change.webm</video:content_loc><video:duration>190</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v5-change-a-setting.jpg</video:thumbnail_loc><video:title>Change a setting</video:title><video:description>A plain request, a diff, a yes, and a gate that will not switch off.</video:description><video:content_loc>https://implementator.io/videos/v5-change-a-setting.webm</video:content_loc><video:duration>54</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v6-codex-on-windows.jpg</video:thumbnail_loc><video:title>Codex on Windows</video:title><video:description>The sandbox, and what the agent does when Node cannot run there.</video:description><video:content_loc>https://implementator.io/videos/v6-codex-on-windows.webm</video:content_loc><video:duration>84</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v8-jira-ticket.jpg</video:thumbnail_loc><video:title>Work from a Jira ticket</video:title><video:description>The ticket is read, saved unchanged, and planned from.</video:description><video:content_loc>https://implementator.io/videos/v8-jira-ticket.webm</video:content_loc><video:duration>81</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v9-mockup-to-code.jpg</video:thumbnail_loc><video:title>From a mockup to shipped code</video:title><video:description>Options on the running page, a pick, then the whole loop.</video:description><video:content_loc>https://implementator.io/videos/v9-mockup-to-code.webm</video:content_loc><video:duration>201</video:duration></video:video>
+<video:video><video:thumbnail_loc>https://implementator.io/img/posters/v10-github.jpg</video:thumbnail_loc><video:title>GitHub, from branch to merge</video:title><video:description>A real draft pull request, CI, your merge, and the close.</video:description><video:content_loc>https://implementator.io/videos/v10-github.webm</video:content_loc><video:duration>109</video:duration></video:video>
+</url>
+<url><loc>https://implementator.io/troubleshooting</loc><lastmod>2026-11-07</lastmod>
+</url>
+</urlset>

@@ -3,37 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Implementator</title>
-<meta name="description" content="A skill pack that puts every code change through one loop in Claude Code or Codex: a plan you approve, tests, a review, your manual test, and a written record.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="home.css">
+<title>Implementator: a process for Claude Code and Codex</title>
+<meta name="description" content="A skill pack that gives Claude Code and Codex one loop for every change: a plan you approve, tests, independent review, your manual test and a record.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://implementator.io/">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Implementator">
+<meta property="og:title" content="Implementator: a process for Claude Code and Codex">
+<meta property="og:description" content="A skill pack that gives Claude Code and Codex one loop for every change: a plan you approve, tests, independent review, your manual test and a record.">
+<meta property="og:url" content="https://implementator.io/">
+<meta property="og:image" content="https://implementator.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Implementator: your coding agent, with a process.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/base.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://implementator.io/#org", "name": "Implementator", "url": "https://implementator.io/", "logo": {"@type": "ImageObject", "url": "https://implementator.io/img/logo.png", "width": 512, "height": 512}, "sameAs": ["https://www.agensi.io/creators/nihillon"]}, {"@type": "WebSite", "@id": "https://implementator.io/#site", "url": "https://implementator.io/", "name": "Implementator", "description": "Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review, your own manual test and a written record.", "inLanguage": "en", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "SoftwareApplication", "@id": "https://implementator.io/#app", "name": "Implementator", "url": "https://implementator.io/", "description": "Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review, your own manual test and a written record.", "applicationCategory": "DeveloperApplication", "applicationSubCategory": "AI coding agent skill pack", "operatingSystem": "Windows", "softwareVersion": "1.0", "softwareRequirements": "Claude Code or Codex CLI, Python 3.8 or newer, git", "image": "https://implementator.io/img/og.png", "publisher": {"@id": "https://implementator.io/#org"}, "featureList": ["A plan you approve before any code", "Skills generated for each repo", "Tests and a self-test on the real app", "Independent review by separate subagents", "A manual test you run", "A written record in a notes repo you own"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Implementator?", "acceptedAnswer": {"@type": "Answer", "text": "Implementator is a skill pack for AI coding agents. It makes Claude Code or Codex CLI work through the same eight-stage loop on every repo: plan, code, tests and checks, self-test, review, manual test, commit and close. Four of those stages wait for you."}}, {"@type": "Question", "name": "Which coding agents does it work with?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Code and Codex CLI are the two we have tested, on Windows. Other agents can connect to the store, but the pack has not been tested on them, and Linux and macOS have not been tested yet."}}, {"@type": "Question", "name": "How is it different from a CLAUDE.md or AGENTS.md file?", "acceptedAnswer": {"@type": "Answer", "text": "A rules file tells an agent how your repo works. Implementator writes those rules for each repo from what it finds there, then adds the process around them: a plan you approve, independent review, a manual test, and a record of each change that survives the session."}}, {"@type": "Question", "name": "Do I have to install anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is delivered through the Agensi store over MCP, so your agent reads the skills live. You need git and Python 3.8 or newer. gh or glab and a Playwright MCP server are optional."}}, {"@type": "Question", "name": "Can the agent skip the review or the tests?", "acceptedAnswer": {"@type": "Answer", "text": "No setting can switch off the plan approval, the review or the manual test. The rules are still instructions, not locks, so an agent can drift. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk."}}, {"@type": "Question", "name": "Does it work with Jira and GitHub?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It reads a named ticket from Jira or another tracker if your agent has that connector, and it opens pull requests and watches CI on GitHub. It never merges. You do."}}, {"@type": "Question", "name": "Where does my work live?", "acceptedAnswer": {"@type": "Answer", "text": "In a separate git repo of notes that belongs to you: plans, reviews, test records and a dated journal. The next session picks up from there."}}, {"@type": "Question", "name": "How much usage does a run take?", "acceptedAnswer": {"@type": "Answer", "text": "One full run from setup to a closed feature used about $3.70 on Claude Code. Our largest test, from a mockup to a merged pull request with several review rounds, used about $19. The model settings are how you tune this."}}]}]}</script>
+<link rel="stylesheet" href="/home.css">
 </head>
 <body>
+<a class="skip" href="#content">Skip to the content</a>
 <header class="bar">
-  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <a class="mark" href="/"><img src="/img/logo.png" alt="" width="32" height="32"> Implementator</a>
   <nav aria-label="Main">
     <a class="wide-only" href="#loop">The loop</a>
     <a class="wide-only" href="#proof">Proof</a>
-    <a href="videos.html">Videos</a>
-    <a href="overview.html">Docs</a>
+    <a href="/videos">Videos</a>
+    <a href="/overview">Docs</a>
   </nav>
 </header>
 
-<main>
+<main id="content">
 <section class="hero">
   <div class="hero-copy">
     <p class="kicker">A skill pack for Claude Code and Codex</p>
     <h1>Your coding agent, <em>with a process.</em></h1>
-    <p class="lead">Every change gets a plan you approve, real tests, independent review and your own manual test. Then a written record, in notes that stay yours.</p>
+    <p class="lead">Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review and your own manual test. Then a written record, in notes that stay yours.</p>
     <div class="cta">
-      <a class="btn primary" href="get-started.html">Get started</a>
-      <a class="btn" href="videos.html">Watch it work</a>
+      <a class="btn primary" href="/get-started">Get started</a>
+      <a class="btn" href="/videos">Watch it work</a>
     </div>
   </div>
   <div class="term" aria-label="A replay of a real run">
     <div class="term-bar"><i></i><i></i><i></i><span>replay of a real run</span></div>
-    <video autoplay muted loop playsinline preload="metadata" poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm"></video>
+    <video muted loop playsinline preload="none" width="1280" height="720" poster="/img/posters/v1-what-it-does.jpg" data-src="/videos/v1-what-it-does.webm" aria-label="Replay of a real run, from a Jira ticket to a merged pull request"></video>
   </div>
 </section>
 
@@ -42,10 +61,20 @@
     <p class="kicker">The loop</p>
     <h2>Eight stages. Four of them wait for you.</h2>
     <p class="sub">The same path for every change, on every repo. Pick a stage to see what happens there.</p>
-    <ol class="rail" id="rail"></ol>
-    <div class="stage-card" id="stage-card" aria-live="polite">
+    <ol class="stage-list" id="stage-list">
+      <li data-you><b>Plan</b> <span>The agent reads the repo and the ticket, then writes a plan. No code until you approve it.</span></li>
+      <li><b>Code</b> <span>Written to the skills generated for this repo, so it follows the conventions already there.</span></li>
+      <li><b>Tests and checks</b> <span>Your own test, lint and typecheck commands, never guessed ones.</span></li>
+      <li><b>Self-test</b> <span>The agent drives the real app or CLI, and forces the failure paths too.</span></li>
+      <li><b>Review</b> <span>Independent subagents, one lens each. Every finding gets resolved, and any fix goes back through the loop.</span></li>
+      <li data-you><b>Manual test</b> <span>The agent writes the steps and the expected results. You run them.</span></li>
+      <li data-you><b>Commit</b> <span>Only after you confirm. Keep this step for yourself if you prefer.</span></li>
+      <li data-you><b>Close</b> <span>When you say so, the work is archived with its plan, reviews and test records.</span></li>
+    </ol>
+    <ol class="rail" id="rail" hidden></ol>
+    <div class="stage-card" id="stage-card" aria-live="polite" hidden>
       <span class="tag" id="stage-tag"></span>
-      <h3 id="stage-title"></h3>
+      <p class="stage-title" id="stage-title"></p>
       <p id="stage-text"></p>
     </div>
   </div>
@@ -71,14 +100,14 @@
       <h2>See it on your real app before anything ships.</h2>
       <p class="sub">The agent tries options on the running page, screenshots each one, and puts the code back exactly as it was. You pick. Your pick goes through the whole loop.</p>
       <div class="thumbs">
-        <figure><div><img src="img/option-a.png" alt="Option A" loading="lazy"></div><figcaption>Option A</figcaption></figure>
-        <figure><div><img src="img/option-b.png" alt="Option B" loading="lazy"></div><figcaption>Option B</figcaption></figure>
-        <figure class="picked"><div><img src="img/option-c.png" alt="Option C" loading="lazy"></div><figcaption>Option C, picked</figcaption></figure>
+        <figure><div><img src="/img/option-a.png" alt="Option A: the existing result line made larger" width="1280" height="800" loading="lazy" decoding="async"></div><figcaption>Option A</figcaption></figure>
+        <figure><div><img src="/img/option-b.png" alt="Option B: the result shown as two stat tiles" width="1280" height="800" loading="lazy" decoding="async"></div><figcaption>Option B</figcaption></figure>
+        <figure class="picked"><div><img src="/img/option-c.png" alt="Option C: the result in a dark band above the text box" width="1280" height="800" loading="lazy" decoding="async"></div><figcaption>Option C, picked</figcaption></figure>
       </div>
     </div>
     <div class="compare reveal" id="compare">
-      <img src="img/page-after.png" alt="The page after the change, with a dark result band above the text box" loading="lazy">
-      <div class="before" id="before"><img src="img/page-before.png" alt="The page before the change" loading="lazy"></div>
+      <img src="/img/page-after.png" alt="The page after the change, with a dark result band above the text box" width="1280" height="800" loading="lazy" decoding="async">
+      <div class="before" id="before"><img src="/img/page-before.png" alt="The page before the change" width="1280" height="800" loading="lazy" decoding="async"></div>
       <span class="label l">Before</span><span class="label r">After</span>
       <input type="range" min="0" max="100" value="50" aria-label="Compare before and after" id="split">
       <div class="handle" id="handle"></div>
@@ -88,7 +117,7 @@
 
 <section class="ship">
   <div class="wrap two flip">
-    <figure class="shot reveal"><img src="img/pr-merged.png" alt="A merged pull request on GitHub, opened by the agent" loading="lazy"></figure>
+    <figure class="shot reveal"><img src="/img/pr-merged.png" alt="A merged pull request on GitHub, opened by the agent" width="1600" height="900" loading="lazy" decoding="async"></figure>
     <div class="reveal">
       <p class="kicker">Ticket to merge</p>
       <h2>From Jira to a merged PR, with a paper trail.</h2>
@@ -106,10 +135,27 @@
   <div class="wrap">
     <h2>Fits how you already work.</h2>
     <div class="cards reveal">
-      <a href="first-project.html"><b>Skills written for each repo</b><span>It scans your code and writes how to build, test, review and commit there. Each rule ties to a file it found.</span></a>
-      <a href="configuration.html"><b>63 settings, 8 presets</b><span>Who commits, which browser, which model tier. Settings change how a stage runs, never whether it runs.</span></a>
-      <a href="daily-use.html"><b>Work that survives the session</b><span>Plans, reviews and a dated journal live in a notes repo that belongs to you.</span></a>
-      <a href="overview.html#limits"><b>Honest about its limits</b><span>The rules are instructions, not locks. Read what it can and cannot promise.</span></a>
+      <a href="/first-project"><b>Skills written for each repo</b><span>It scans your code and writes how to build, test, review and commit there. Each rule ties to a file it found.</span></a>
+      <a href="/configuration"><b>63 settings, 8 presets</b><span>Who commits, which browser, which model tier. Settings change how a stage runs, never whether it runs.</span></a>
+      <a href="/daily-use"><b>Work that survives the session</b><span>Plans, reviews and a dated journal live in a notes repo that belongs to you.</span></a>
+      <a href="/overview#limits"><b>Honest about its limits</b><span>The rules are instructions, not locks. Read what it can and cannot promise.</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="kicker">Questions</p>
+    <h2>What people ask first.</h2>
+    <div class="qs">
+      <article class="q"><h3>What is Implementator?</h3><p>Implementator is a skill pack for AI coding agents. It makes Claude Code or Codex CLI work through the same eight-stage loop on every repo: plan, code, tests and checks, self-test, review, manual test, commit and close. Four of those stages wait for you.</p></article>
+      <article class="q"><h3>Which coding agents does it work with?</h3><p>Claude Code and Codex CLI are the two we have tested, on Windows. Other agents can connect to the store, but the pack has not been tested on them, and Linux and macOS have not been tested yet.</p></article>
+      <article class="q"><h3>How is it different from a CLAUDE.md or AGENTS.md file?</h3><p>A rules file tells an agent how your repo works. Implementator writes those rules for each repo from what it finds there, then adds the process around them: a plan you approve, independent review, a manual test, and a record of each change that survives the session.</p></article>
+      <article class="q"><h3>Do I have to install anything?</h3><p>No. It is delivered through the Agensi store over MCP, so your agent reads the skills live. You need git and Python 3.8 or newer. <code>gh</code> or <code>glab</code> and a Playwright MCP server are optional.</p></article>
+      <article class="q"><h3>Can the agent skip the review or the tests?</h3><p>No setting can switch off the plan approval, the review or the manual test. The rules are still instructions, not locks, so an agent can drift. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk.</p></article>
+      <article class="q"><h3>Does it work with Jira and GitHub?</h3><p>Yes. It reads a named ticket from Jira or another tracker if your agent has that connector, and it opens pull requests and watches CI on GitHub. It never merges. You do.</p></article>
+      <article class="q"><h3>Where does my work live?</h3><p>In a separate git repo of notes that belongs to you: plans, reviews, test records and a dated journal. The next session picks up from there.</p></article>
+      <article class="q"><h3>How much usage does a run take?</h3><p>One full run from setup to a closed feature used about $3.70 on Claude Code. Our largest test, from a mockup to a merged pull request with several review rounds, used about $19. The <a href="/configuration#models">model settings</a> are how you tune this.</p></article>
     </div>
   </div>
 </section>
@@ -118,7 +164,7 @@
   <div class="wrap">
     <h2>Give your agent a process.</h2>
     <div class="cta">
-      <a class="btn primary" href="get-started.html">Get started</a>
+      <a class="btn primary" href="/get-started">Get started</a>
       <a class="btn" href="https://www.agensi.io/creators/nihillon">Agensi store</a>
     </div>
   </div>
@@ -126,8 +172,8 @@
 </main>
 
 <footer class="foot">
-  <p>The numbers come from recorded runs on the public <a href="https://github.com/JakubLukaszuk/tally-demo">tally-demo</a> repo, before store release, with delivery emulated.</p>
+  <p>Last updated <time datetime="2026-11-07">7 November 2026</time>. The numbers come from recorded runs on the public <a href="https://github.com/JakubLukaszuk/tally-demo">tally-demo</a> repo, before store release, with delivery emulated.</p>
 </footer>
-<script src="home.js" defer></script>
+<script src="/home.js" defer></script>
 </body>
 </html>

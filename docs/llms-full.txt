@@ -1,0 +1,1020 @@
+# Implementator
+
+> Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review, your own manual test and a written record.
+
+
+---
+
+Source: https://implementator.io/
+
+A skill pack for Claude Code and Codex
+
+# Your coding agent, with a process.
+
+Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review and your own manual test. Then a written record, in notes that stay yours.
+
+[Get started](https://implementator.io/get-started)
+[Watch it work](https://implementator.io/videos)
+
+replay of a real run
+
+The loop
+
+## Eight stages. Four of them wait for you.
+
+The same path for every change, on every repo. Pick a stage to see what happens there.
+
+- **Plan** The agent reads the repo and the ticket, then writes a plan. No code until you approve it.
+
+- **Code** Written to the skills generated for this repo, so it follows the conventions already there.
+
+- **Tests and checks** Your own test, lint and typecheck commands, never guessed ones.
+
+- **Self-test** The agent drives the real app or CLI, and forces the failure paths too.
+
+- **Review** Independent subagents, one lens each. Every finding gets resolved, and any fix goes back through the loop.
+
+- **Manual test** The agent writes the steps and the expected results. You run them.
+
+- **Commit** Only after you confirm. Keep this step for yourself if you prefer.
+
+- **Close** When you say so, the work is archived with its plan, reviews and test records.
+
+Proof, not promises
+
+## What the loop caught on a demo repo.
+
+Small changes to a small project, and real findings from the reviewers that came after the agent that wrote the code.
+
+4test gaps found in a three-line feature, after its author had called it ready
+
+0pxof layout jump on a slow load, down from 75px, once review reproduced it
+
+8independent reviewers in a full round, one lens each, none seeing the others' findings
+
+Mockups
+
+## See it on your real app before anything ships.
+
+The agent tries options on the running page, screenshots each one, and puts the code back exactly as it was. You pick. Your pick goes through the whole loop.
+
+Option A
+
+Option B
+
+Option C, picked
+
+BeforeAfter
+
+Ticket to merge
+
+## From Jira to a merged PR, with a paper trail.
+
+- **Read the ticket.** Saved unchanged as the brief, so the plan answers what was asked.
+
+- **Open a draft PR.** Linked to the ticket, in your repo's commit style.
+
+- **Watch CI.** Red goes back through the loop.
+
+- **You merge.** The agent never does. It finds the merge and archives the work.
+
+## Fits how you already work.
+
+[**Skills written for each repo**It scans your code and writes how to build, test, review and commit there. Each rule ties to a file it found.](https://implementator.io/first-project)
+[**63 settings, 8 presets**Who commits, which browser, which model tier. Settings change how a stage runs, never whether it runs.](https://implementator.io/configuration)
+[**Work that survives the session**Plans, reviews and a dated journal live in a notes repo that belongs to you.](https://implementator.io/daily-use)
+[**Honest about its limits**The rules are instructions, not locks. Read what it can and cannot promise.](https://implementator.io/overview#limits)
+
+Questions
+
+## What people ask first.
+
+### What is Implementator?
+Implementator is a skill pack for AI coding agents. It makes Claude Code or Codex CLI work through the same eight-stage loop on every repo: plan, code, tests and checks, self-test, review, manual test, commit and close. Four of those stages wait for you.
+
+### Which coding agents does it work with?
+Claude Code and Codex CLI are the two we have tested, on Windows. Other agents can connect to the store, but the pack has not been tested on them, and Linux and macOS have not been tested yet.
+
+### How is it different from a CLAUDE.md or AGENTS.md file?
+A rules file tells an agent how your repo works. Implementator writes those rules for each repo from what it finds there, then adds the process around them: a plan you approve, independent review, a manual test, and a record of each change that survives the session.
+
+### Do I have to install anything?
+No. It is delivered through the Agensi store over MCP, so your agent reads the skills live. You need git and Python 3.8 or newer. `gh` or `glab` and a Playwright MCP server are optional.
+
+### Can the agent skip the review or the tests?
+No setting can switch off the plan approval, the review or the manual test. The rules are still instructions, not locks, so an agent can drift. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk.
+
+### Does it work with Jira and GitHub?
+Yes. It reads a named ticket from Jira or another tracker if your agent has that connector, and it opens pull requests and watches CI on GitHub. It never merges. You do.
+
+### Where does my work live?
+In a separate git repo of notes that belongs to you: plans, reviews, test records and a dated journal. The next session picks up from there.
+
+### How much usage does a run take?
+One full run from setup to a closed feature used about $3.70 on Claude Code. Our largest test, from a mockup to a merged pull request with several review rounds, used about $19. The [model settings](https://implementator.io/configuration#models) are how you tune this.
+
+## Give your agent a process.
+
+[Get started](https://implementator.io/get-started)
+[Agensi store](https://www.agensi.io/creators/nihillon)
+
+---
+
+Source: https://implementator.io/overview
+
+Docs
+
+# Implementator
+
+A skill pack that makes your coding agent work the same disciplined way on every repo: a plan you approve, tests, a review, a manual test, and a written record of all of it.
+
+Implementator runs in Claude Code and Codex CLI. It is delivered through the Agensi store over MCP, so nothing is installed: your agent reads the skills live, and everything it writes goes into a separate notes repo that belongs to you.
+
+## The loop
+
+Every change goes through the same stages, in this order. The agent does the work and stops at the stages marked for you.
+
+- **Plan**The agent writes it. You approve it before any code.
+
+- **Code**Written to the repo's own conventions.
+
+- **Tests and checks**Your test, lint and typecheck commands.
+
+- **Self-test**The agent drives the real app or CLI, unhappy paths too.
+
+- **Review**Severity-ranked. Every finding gets resolved.
+
+- **Manual test**The agent writes the steps. You run them.
+
+- **Commit**Only after you confirm. You can keep this step for yourself.
+
+- **Close**When you say so, the work is archived with its record.
+
+Orange marks a stage that waits for you.
+
+**What Implementator does** A real change, from a Jira ticket to a merged pull request.
+
+## Why people use it
+
+- **The agent stops guessing your stack.** It scans each repo and writes skills for that repo: how to code, test, review and commit there, each rule tied to a file it found.
+
+- **Work survives the session.** Plans, reviews, test records and a dated journal live in your notes repo, so the next session picks up where this one stopped.
+
+- **Many repos, one way of working.** Connect as many as you like. Each has its own settings on top of shared defaults.
+
+- **Settings change how a stage runs, never whether it runs.** Who commits, which browser, which model tier: all yours to set. The plan approval, the review and the manual test cannot be switched off.
+
+## What is in the pack
+
+Thirteen skills, a set of rules, and small scripts for the steps that should not depend on an agent's memory. You do not need to memorise any of this: say what you want and the agent picks the skill.
+
+| Skill | What it does |
+
+| `implementator` | Explains the framework and routes you to the right step. |
+
+| `implementator-setup` | Creates the notes repo and asks six questions about how you work. |
+
+| `implementator-connect-project` | Connects a code repo: type, commands, how to test it. |
+
+| `implementator-generate-skills` | Writes that repo's own coding, testing, review and commit skills from what it finds. |
+
+| `implementator-preflight` | Checks a project is ready before work starts. |
+
+| `implementator-new-initiative` | Opens a new feature or ticket in the notes. |
+
+| `implementator-implement` | Runs the loop above. |
+
+| `implementator-grill` | Questions an unclear plan until every decision is settled. |
+
+| `implementator-diagnose` | Works a hard bug: a failing check first, then the cause, then a fix behind a test. |
+
+| `implementator-mockup` | Tries visual options in the running app, shows you screenshots, reverts everything. |
+
+| `implementator-pr-screenshots` | Before and after shots for a pull request. |
+
+| `implementator-archive` | Closes finished work and archives it with its path kept. |
+
+| `implementator-configure` | Shows and changes settings in plain language, and applies presets. |
+
+## What stays yours
+
+Everything the skills generate is your own output: the notes repo, plans, journals, test records and the per-repo skills. The pack itself is licensed for live use, so your agent reads it from the store each time and does not save a copy.
+
+## What to expect, honestly
+
+- **The rules are instructions, not locks.** A local install could use git hooks to enforce them. A live pack cannot. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk, but an agent can still drift, so read what it reports. If it skips something, [here is what to do](https://implementator.io/troubleshooting#skipped).
+
+- **Tested on a small scale.** We ran it from setup to archive in Claude Code and in Codex CLI on Windows, on a small Node command-line project, with the store's delivery emulated. Linux, macOS and other agents have not been tested yet.
+
+- **It costs real usage.** One full run from setup to a closed feature used about $3.70 on Claude Code. A review on a larger change costs more. The [model settings](https://implementator.io/configuration#models) are how you tune this.
+
+- **Codex on Windows has one limit you will meet.** Its sandbox stops Node from starting child processes, so you run Node test suites yourself. [Details](https://implementator.io/get-started#codex-windows).
+
+---
+
+Source: https://implementator.io/get-started
+
+Docs
+
+# Get started
+
+Connect your agent to the store, then ask it to set implementator up. The first run takes a few minutes and a handful of answers.
+
+## What you need
+
+- **An agent that can sign in to Agensi:** Claude Code or Codex CLI are the two we have tested.
+
+- **Git.** Your notes live in a git repo.
+
+- **Python 3.8 or newer.** Every script in the pack is Python. You do not need bash.
+
+- **Your code in a git repo.**
+
+- **Optional:** `gh` or `glab` for pull requests and CI, and a Playwright MCP server for browser self-tests.
+
+## 1. Connect your agent
+
+### Claude Code
+
+```
+claude mcp add --transport http agensi https://mcp.agensi.io/mcp/auth
+```
+
+Then open `/mcp`, choose Authenticate, sign in with the account you bought the pack with, and click Allow.
+
+### Codex CLI
+
+```
+codex mcp add agensi --url https://mcp.agensi.io/mcp/auth
+codex mcp login agensi
+```
+
+Sign in and click Allow. On Windows, read [Codex on Windows](#codex-windows) as well.
+
+**Only the newest app stays connected.** Each app you sign in from counts as one agent, and signing in from a new one disconnects the others. Switch agents by connecting the new one, or in Dashboard → MCP on Agensi.
+
+Other agents are on [Agensi's setup page](https://www.agensi.io/docs/mcp-setup). They can connect, but this pack has not been tested on them.
+
+## 2. Run the setup
+
+Open a session in the folder that holds your code, and say:
+
+```
+I just bought implementator. Set it up for me. My code is in the tally folder here.
+```
+
+Your agent then:
+
+- **Asks where the notes repo goes,** and recommends a folder beside your code. Never put it inside a code repo. Keep the path short: see [the Windows path limit](https://implementator.io/troubleshooting#path).
+
+- **Offers a small pointer file** for the notes repo, so new sessions there know to start with implementator. It is written only if you say yes.
+
+- **Asks six questions,** each with a recommendation based on what it found on your machine. Answer the ones you care about; `ok` accepts the rest.
+
+- **Shows the change as a diff** and writes `implementator.json` only after your yes.
+
+### The six questions
+
+| Question | Your choices |
+
+| How should finished work leave? | Draft pull request; solo (push, no PR); team (draft PR, worktrees, CI watched); or you-commit (the agent stages and drafts the message, you do the rest). |
+
+| Which issue tracker do your ticket ids come from? | None, Linear, Jira, GitHub, GitLab, Azure Boards, other. |
+
+| Where is the code hosted? | Auto reads it from each repo's remote, or name one. |
+
+| How should the browser self-test run? | Which driver, visible or headless, and whether to record. |
+
+| Watch CI after each push and fix what goes red? | Yes or no. |
+
+| Model cost? | Balanced, economical or maximum quality. |
+
+None of this is final. Every answer can be changed later: see [Configuration](https://implementator.io/configuration).
+
+## What the notes repo looks like
+
+```
+implementator-notes/
+  implementator.json          your defaults
+  epics/                      work that spans several projects
+  projects/
+    tally/cli/                one connected project
+      project.json            its settings
+      skills/                 coding, testing, review, repo
+      ADD-JSON-OUTPUT/        one feature
+        workstreams/json-output/
+          RESUME.md           the journal, newest first
+          plans/ docs/ tests/
+  archived/                   finished work, path kept
+```
+
+It is an ordinary git repo. The agent reports what is uncommitted and leaves the commit to you, unless you tell it to commit the notes.
+
+## Codex on Windows
+
+Three things are different here, and all three come from Codex's Windows sandbox.
+
+- **Allow commands to run.** In our tests `workspace-write` rejected every command until the sandbox was set to its unelevated mode, which keeps the sandbox on:
+
+```
+codex -s workspace-write -c 'windows.sandbox="unelevated"'
+```
+
+We tested this with `codex exec`. Do not turn the sandbox off to get around it.
+
+- **Node cannot start child processes,** so `npm test` fails with `spawn EPERM` on any project that uses `node --test` or spawns its CLI in tests. Python and git are fine. The agent will ask you to run the suite outside the sandbox and paste the result. That counts as the run.
+
+- **`gh` cannot read your sign-in,** so it may say the token is invalid when it is not. The pack reports this as a warning, not a failure.
+
+---
+
+Source: https://implementator.io/first-project
+
+Docs
+
+# Your first project
+
+From a code repo to one finished change. The examples come from a real run on `tally`, a small word-count CLI.
+
+The skills are not commands you type. You say what you want in your own words, and the agent loads the skill. To be sure it uses the pack, start with "Use implementator".
+
+## 1. Connect the repo
+
+```
+Connect the tally repo to implementator.
+```
+
+The agent reads the repo and comes back with what it found: type, test and launch commands, and how it would verify a change. It asks three things: the project's name, its verification profile, and any hard rules, such as "keep it dependency-free". Nothing it could not confirm is invented: if a repo has no lint command, none is written down.
+
+A project is addressed as `product/id`, such as `tally/cli`.
+
+## 2. Approve its skills
+
+Next the agent proposes a table of skills for this repo, with the evidence for each, and lists any it would skip. A CLI with no database gets no database skill. Each generated skill says which assumptions you should confirm and which gaps it noticed, such as a file with no tests. It reports those gaps and does not fix them on its own.
+
+The skills go in your notes repo, not your code repo.
+
+## 3. Preflight
+
+The agent checks that the project is ready: config valid, toolchain present, dependencies installed, commands real. The verdict is READY or a list of what to fix.
+
+## 4. Start the work
+
+```
+Start the real work: tally should take a --json flag that prints total and unique as JSON
+```
+
+The agent opens a workstream, claims it for this session and writes a plan. **No code gets written until you approve that plan.** Read the summary at the top. If you ask for a change, you get a revised plan to approve.
+
+Unsure what you want yet? Say "grill me on this first", and it will ask until the decisions are settled.
+
+## 5. Let the loop run
+
+After approval the agent writes the code and tests, runs your checks, drives the app or CLI itself, including the failure paths, and reviews the change. If anything fails it goes back and fixes it. You will see the result, not every step.
+
+## 6. Run the manual test
+
+The agent gives you a short table of commands and expected results. Run them yourself and report back:
+
+```
+Manual test passed, every row matched the table.
+```
+
+If a row does not match, say what you saw. Any code change sends the work back through tests and review.
+
+## 7. Commit
+
+With the default settings, the agent commits and pushes after you confirm, and opens a draft pull request. With `you-commit` it stages the change on a branch and gives you the message.
+
+## 8. Close it out
+
+```
+Committed. Close it out.
+```
+
+The agent marks the work resolved, journals it, and moves it to `archived/` with its path kept. Nothing is deleted. Then it reports what is uncommitted in the notes repo and leaves that commit to you. To let it make that commit, say "commit the notes".
+
+---
+
+Source: https://implementator.io/daily-use
+
+Daily use
+
+# A normal day with Implementator
+
+Once a project is connected, most days come down to a few sentences. Your agent does not remember the framework between sessions, so begin each one by naming it.
+
+**One change, start to finish** Plan, code, tests, review, manual test, pull request, close.
+
+-
+
+## Start a session
+
+Use implementator. Where did we leave off?
+
+The agent loads the rules and shows every active workstream: its status, the newest journal entry, how old it is, and any pull request. If you added the pointer file during setup, a session opened in the notes repo finds its way there alone.
+
+-
+
+## Start new work
+
+Use implementator. Add a --version flag to tally that prints the version from package.json.
+
+Every change opens its own workstream and goes through the [loop](https://implementator.io/overview#loop), small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.
+
+-
+
+## Or start from a ticket
+
+Start work on TAL-1.
+
+If your agent has your tracker's connector, it reads the ticket and saves it unchanged as the brief, then writes the plan from it. Without a connector it asks you to paste the ticket. It never fills one in from the id.
+
+For Jira, add Atlassian's MCP server and sign in. You can grant read access only, which is all the pack needs:
+
+```
+claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp
+codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp
+```
+
+We tested this on a free Jira site in Claude Code. Each call uses Atlassian's Rovo credits.
+
+**Work from a Jira ticket** The ticket is read, saved unchanged, and planned from.
+
+-
+
+## Come back later
+
+The journal is the memory. A new session reads it, finds the last plan and test record, and carries on. Short work and long work are handled the same way.
+
+-
+
+## Run several sessions at once
+
+One workstream takes one agent at a time. A session claims its workstream before working on it, and a second session gets a clear refusal instead of quietly sharing it. A claim from a crashed session expires after four hours. Different workstreams can run side by side.
+
+With `features.git.worktree` on, each workstream gets its own git worktree, so parallel changes to one repo stay apart.
+
+## What else you can ask for
+
+Grill me on this plan.
+
+Rounds of questions, each with a recommended answer, until nothing is assumed. The agent looks up facts itself and asks you for decisions.
+
+Diagnose this flaky test.
+
+It builds a check that fails on this bug first, reproduces and narrows it, tests one explanation at a time, and fixes it behind a regression test.
+
+Mock up a few options for this page.
+
+Temporary visual edits in the running app, a screenshot of each, then everything reverted. You pick one.
+
+Add before and after screenshots to the PR.
+
+Shots of the changed surface, at the viewports you set.
+
+Check tally/cli is ready.
+
+Runs preflight on its own.
+
+Refresh the skills for tally/cli.
+
+Rescans the repo and shows you what moved.
+
+**From a mockup to shipped code** Options on the running page, a pick, then the whole loop.
+
+## Looking after the notes
+
+- Sessions end with a report of what is uncommitted in the notes repo and a suggested commit command. Run it, or tell the agent to commit the notes.
+
+- Commit the notes after a close. An archive that exists only in your working folder is not safe yet.
+
+- Give the notes repo a private remote. Nothing else backs it up.
+
+---
+
+Source: https://implementator.io/configuration
+
+Docs
+
+# Configuration
+
+Settings decide how each stage runs: who commits, which browser, how much model. They never decide whether a stage runs.
+
+**Modes, never gates.** No setting can skip the plan approval, the review, the manual test or your confirmation before a commit. Ask to turn one off and the agent will say no.
+
+## How to change a setting
+
+Say it in plain words. The agent names the key and the file, shows the diff, and writes only after your yes.
+
+```
+Use implementator. Turn on CI watching for tally/cli.
+What does tally/cli use for pull requests?
+Use the team preset for all projects.
+```
+
+## Where a value comes from
+
+- **The project:** `projects/<product>/<id>/project.json`.
+
+- **Your defaults:** `implementator.json` at the notes root.
+
+- **Built in:** the defaults on this page.
+
+The first one that sets a key wins. A project overrides your defaults one key at a time, so it never has to repeat a whole block.
+
+```
+{
+  "version": 1,
+  "defaults": {
+    "features": {
+      "git": { "pr": "ready" },
+      "selfTest": { "maxIterations": 3 }
+    }
+  }
+}
+```
+
+## Presets
+
+A preset is a named set of settings. It goes through the same diff and the same yes as any other change.
+
+| Preset | What it sets up |
+| `backend-api` | A service with no screens: the self-test calls the live API over HTTP and no screenshots are taken. Apply it to that component, not to defaults. |
+| `headless-ci` | No browser windows while it works: Playwright runs headless, CI is watched after the push, and one visible drive at the end shows you the result. |
+| `routing-economical` | Lower model cost: mechanical stages and coding on the cheap tier, the reasoning gates (plan, triage, review) at their floor of standard. A stage that stalls is re-run once on strong before its result is trusted. |
+| `routing-max-quality` | Highest quality, highest cost: coding, the self-test and the reasoning gates all on the strong tier at high effort. |
+| `solo` | One person, no review queue: the agent commits and pushes after your confirmation, and opens no pull request. |
+| `team` | A shared repo: each workstream in its own worktree, a draft pull request, and CI watched until it is green. |
+| `thorough-evidence` | More proof per change: a smoke pass over the core flows, screenshots on every UI change at three sizes and in dark mode, and a recording of any drive that fails. Recording needs the Playwright MCP server started with --caps=devtools. |
+| `you-commit` | You keep the keyboard on git: the agent stages the change and prints the commit message; you commit, push and open the PR. |
+
+## Every setting
+
+### How finished work leaves
+
+#### `features.git.commit`
+Who runs `git commit` in your code repo. `agent` commits after you confirm. `user` stages the change and prints the message, and you take it from there.
+
+**Change it when:** you want to keep your hands on every commit.
+
+Values`agent` `user`Default`agent`Applies toall projects, or one
+```
+{"features": {"git": {"commit": "agent"}}}
+```
+
+#### `features.git.push`
+Whether the agent pushes. `false` commits locally only.
+
+**Change it when:** the repo has no remote yet, or you push by hand.
+
+Values`true` `false`Default`true`Applies toall projects, or one
+```
+{"features": {"git": {"push": true}}}
+```
+
+#### `features.git.pr`
+How a pull request is opened: as a draft, ready for review, or not at all.
+
+**Change it when:** you work alone (`never`) or your team reviews straight away (`ready`).
+
+Values`draft` `ready` `never`Default`draft`Applies toall projects, or one
+```
+{"features": {"git": {"pr": "draft"}}}
+```
+
+#### `features.git.branchPrefix`
+A prefix for branches the loop creates, such as `feat/`. Left unset, it follows the repo's own convention.
+
+**Change it when:** your team has a naming rule the repo does not show.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"features": {"git": {"branchPrefix": "..."}}}
+```
+
+#### `features.git.worktree`
+Does each workstream's code changes in its own git worktree, so your main checkout stays untouched.
+
+**Change it when:** you run several sessions on one repo.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"features": {"git": {"worktree": false}}}
+```
+
+### After a push
+
+#### `features.postPush.watchCI`
+Watches CI after a push through the host's own CLI and fixes what goes red. It checks for a merge conflict first, because a conflict stops CI from running at all.
+
+**Change it when:** the repo has CI and the host CLI is signed in.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"features": {"postPush": {"watchCI": false}}}
+```
+
+#### `features.postPush.finalHeadedTest`
+Runs one last drive of the changed screens in a visible browser, once CI is green.
+
+**Change it when:** you want a final look at the real thing before merging.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"features": {"postPush": {"finalHeadedTest": false}}}
+```
+
+#### `features.postPush.flakePatterns`
+Patterns for failures you know to be flaky. A match is labelled as a known flake and the rerun command is suggested. Nothing is rerun by itself, and an unmatched failure still counts as a real one.
+
+**Change it when:** one CI job fails at random and wastes your time.
+
+Valuesa listDefaultnot setApplies toall projects, or one
+```
+{"features": {"postPush": {"flakePatterns": "..."}}}
+```
+
+### Host and tracker
+
+#### `platform.host`
+Where the code is hosted, which decides the CLI used for pull requests. `auto` reads it from the repo's `origin` remote.
+
+**Change it when:** the remote's address does not show the host, such as a self-hosted server.
+
+Values`auto` `github` `gitlab` `bitbucket` `azure-devops` `gitea` `other` `none`Default`auto`Applies toall projects, or one
+```
+{"platform": {"host": "auto"}}
+```
+
+#### `platform.tracker`
+The issue tracker your ticket ids come from. `none` leaves ids as plain text. This setting makes links; reading a ticket also needs the tracker's connector in your agent.
+
+**Change it when:** your branch or initiative names carry ids like ABC-123.
+
+Values`none` `linear` `jira` `github` `gitlab` `azure-boards` `other`Default`none`Applies toall projects, or one
+```
+{"platform": {"tracker": "none"}}
+```
+
+#### `platform.ticketPattern`
+A regular expression for your ticket ids, such as `ACME-\d+`.
+
+**Change it when:** your ids do not look like ABC-123.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"platform": {"ticketPattern": "..."}}
+```
+
+#### `platform.ticketUrl`
+The address of a ticket, with `{id}` where the id goes.
+
+**Change it when:** you set a tracker and want ids turned into links.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"platform": {"ticketUrl": "..."}}
+```
+
+### How a change is verified
+
+#### `verification`
+How the agent drives a change itself. `browser` uses a real browser, `api` calls a live server, `mobile` uses a device or emulator, `generic` runs the real command. `auto` picks from the project type.
+
+**Change it when:** the type of a project does not match how it is really used.
+
+Values`browser` `api` `mobile` `generic` `auto`Default`auto`Applies toall projects, or one
+```
+{"verification": "auto"}
+```
+
+#### `features.selfTest.unhappyPaths`
+Which failure paths the self-test must force besides the happy path.
+
+**Change it when:** a path does not exist on a surface, such as no loading state.
+
+Valuesa listDefault`["error", "loading", "empty"]`Applies toall projects, or one
+```
+{"features": {"selfTest": {"unhappyPaths": ["error", "loading", "empty"]}}}
+```
+
+#### `features.selfTest.maxIterations`
+How many fix-and-retry rounds the self-test gets before it reports the result as flaky instead of guessing.
+
+**Change it when:** a slow project burns too much on retries.
+
+Valuesa whole numberDefault`5`Applies toall projects, or one
+```
+{"features": {"selfTest": {"maxIterations": 5}}}
+```
+
+#### `features.selfTest.smokePass`
+Adds a short drive over the app's core flows, not only the screens that changed.
+
+**Change it when:** changes tend to break things far from where they were made.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"features": {"selfTest": {"smokePass": false}}}
+```
+
+#### `features.selfTest.record`
+Records the browser self-test as evidence: video, trace, both, or only when something goes wrong. Needs a Playwright MCP server started with `--caps=devtools`.
+
+**Change it when:** you want proof of a drive to attach to a review.
+
+Values`off` `video` `trace` `both` `on-failure`Default`off`Applies toall projects, or one
+```
+{"features": {"selfTest": {"record": "off"}}}
+```
+
+#### `tests.unit`
+Whether the loop writes unit tests. `false` writes no new ones, and the existing suite still runs.
+
+**Change it when:** a project has no unit test setup and should not get one.
+
+Values`true` `false`Defaultnot setApplies toeach project
+```
+{"tests": {"unit": "..."}}
+```
+
+#### `testHooks`
+The attribute the self-test finds elements by, such as `data-testid`.
+
+**Change it when:** the project uses something other than what the scan found.
+
+ValuestextDefaultnot setApplies toeach project
+```
+{"testHooks": "..."}
+```
+
+### Browser and screenshots
+
+#### `features.browserDriver`
+What drives the browser self-test. `auto` uses the Playwright MCP server when connected. `claude-chrome` is for Claude Code only, with the Claude in Chrome extension.
+
+**Change it when:** you need your real, signed-in Chrome.
+
+Values`auto` `claude-chrome` `playwright`Default`auto`Applies toall projects, or one
+```
+{"features": {"browserDriver": "auto"}}
+```
+
+#### `features.browserMode`
+Whether Playwright shows a window. Set when the server starts, so a session cannot change it midway. The loop looks for an MCP server named `playwright` for headed runs and `playwright-headless` for headless ones.
+
+**Change it when:** you run on a server or want to keep working undisturbed.
+
+Values`headed` `headless`Default`headed`Applies toall projects, or one
+```
+{"features": {"browserMode": "headed"}}
+```
+
+#### `features.screenshots.mode`
+When pull request screenshots are taken. `auto` takes them only if a change alters something visible.
+
+**Change it when:** you want them always, or never.
+
+Values`auto` `always` `never`Default`auto`Applies toall projects, or one
+```
+{"features": {"screenshots": {"mode": "auto"}}}
+```
+
+#### `features.screenshots.viewports`
+Which sizes to capture: desktop, tablet, mobile.
+
+**Change it when:** the project has a phone layout worth showing.
+
+Valuesa listDefault`["desktop"]`Applies toall projects, or one
+```
+{"features": {"screenshots": {"viewports": ["desktop"]}}}
+```
+
+#### `features.screenshots.darkMode`
+Also captures each shot in the dark colour scheme.
+
+**Change it when:** the app has a dark mode.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"features": {"screenshots": {"darkMode": false}}}
+```
+
+### Project rules and review format
+
+#### `rules`
+A path to a Markdown file of hard rules for this project, which the loop must honour.
+
+**Change it when:** something must always hold, such as "no new dependencies".
+
+ValuestextDefaultnot setApplies toeach project
+```
+{"rules": "..."}
+```
+
+#### `review.reportFormat`
+A path to your own template for the review report.
+
+**Change it when:** your team expects a set format.
+
+ValuestextDefaultnot setApplies toeach project
+```
+{"review": {"reportFormat": "..."}}
+```
+
+### Model tiers and escalation
+
+The stage table is under [Models](#models) below.
+
+#### `orchestration.tiers.cheap`
+The real model behind the `cheap` tier. Unset, your agent decides.
+
+**Change it when:** you want a specific model for routine stages.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"orchestration": {"tiers": {"cheap": "..."}}}
+```
+
+#### `orchestration.tiers.standard`
+The real model behind the `standard` tier.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"orchestration": {"tiers": {"standard": "..."}}}
+```
+
+#### `orchestration.tiers.strong`
+The real model behind the `strong` tier.
+
+ValuestextDefaultnot setApplies toall projects, or one
+```
+{"orchestration": {"tiers": {"strong": "..."}}}
+```
+
+#### `orchestration.escalation.enabled`
+Moves a stalled stage up to a stronger model instead of retrying on the same one.
+
+**Change it when:** you need a hard ceiling on cost.
+
+Values`true` `false`Default`true`Applies toall projects, or one
+```
+{"orchestration": {"escalation": {"enabled": true}}}
+```
+
+#### `orchestration.escalation.to.model`
+The tier a stalled stage moves up to.
+
+ValuestextDefault`strong`Applies toall projects, or one
+```
+{"orchestration": {"escalation": {"to": {"model": "strong"}}}}
+```
+
+#### `orchestration.escalation.to.effort`
+The effort it runs at there.
+
+Values`low` `medium` `high` `auto`Default`high`Applies toall projects, or one
+```
+{"orchestration": {"escalation": {"to": {"effort": "high"}}}}
+```
+
+#### `orchestration.escalation.to.isolate`
+Whether the escalated stage runs in its own subagent.
+
+Values`true` `false`Default`false`Applies toall projects, or one
+```
+{"orchestration": {"escalation": {"to": {"isolate": false}}}}
+```
+
+## Models
+
+Each stage runs on a model tier, not a named model: `cheap`, `standard` or `strong`. Your agent maps a tier to a real model. Effort is `low`, `medium`, `high` or `auto`.
+
+The plan, the failure triage and the review can never go below `standard`. These are the built-in values:
+
+| Stage | What runs | Tier | Effort | Own subagent |
+| `orient` | Reading the state of the work | `cheap` | `low` | no |
+| `plan` | Writing the plan | `strong` | `high` | no |
+| `code` | Writing the code | `standard` | `medium` | no |
+| `staticChecks` | Lint, typecheck, tests | `cheap` | `low` | no |
+| `selfTest` | Driving the app | `standard` | `medium` | yes |
+| `triage` | Working out why something failed | `strong` | `high` | no |
+| `review` | The code review | `strong` | `high` | yes |
+| `manualScenario` | Writing your manual test | `standard` | `low` | no |
+| `commit` | Commit and pull request | `cheap` | `low` | no |
+| `postPush` | Watching CI | `cheap` | `low` | no |
+
+Each stage takes the settings `orchestration.stages.<stage>.model`, `.effort` and `.isolate`. `isolate` runs the stage in its own subagent, where your agent has them. If it does not, the agent runs that stage itself and says so.
+
+## Fields only a project has
+
+These are written when you connect a repo and generate its skills. You rarely edit them by hand.
+
+| Field | What it holds |
+
+| `path` | Where the code lives. |
+
+| `type` | Frontend, backend, CLI and so on. |
+
+| `commands` | The real lint, typecheck, test and launch commands. |
+
+| `skills` | Which generated skills fill the coding, testing, review and repo roles. |
+
+---
+
+Source: https://implementator.io/videos
+
+Videos
+
+# Watch it work
+
+Every video replays a real run on the public [tally-demo](https://github.com/JakubLukaszuk/tally-demo) repo. The agent's words are unchanged. Waits are cut, tool output is folded, and captions are added.
+
+Recorded before store release, with delivery emulated: the agent read the pack from a local folder, not over MCP. There is no sound.
+
+**What Implementator does** A real change, from a Jira ticket to a merged pull request.
+
+**Set it up** The notes repo, the pointer file and the six questions.
+
+**Connect a repo** What the agent detects, and the skills it proposes.
+
+**One change, start to finish** Plan, code, tests, review, manual test, pull request, close.
+
+**Change a setting** A plain request, a diff, a yes, and a gate that will not switch off.
+
+**Codex on Windows** The sandbox, and what the agent does when Node cannot run there.
+
+**Work from a Jira ticket** The ticket is read, saved unchanged, and planned from.
+
+**From a mockup to shipped code** Options on the running page, a pick, then the whole loop.
+
+**GitHub, from branch to merge** A real draft pull request, CI, your merge, and the close.
+
+---
+
+Source: https://implementator.io/troubleshooting
+
+Docs
+
+# Troubleshooting
+
+Most of these come from real test runs. The messages are quoted as the pack prints them.
+
+## The agent skipped a test, the review or the manual pass
+
+Ask it: "What is left before this is done?" In our runs that was enough for the agent to name what it had skipped. Then say "Go on, finish the loop."
+
+The rules are instructions and an agent can drift from them, more so on a long session. Starting a new session reloads them. Closing is checked by a script as well: [see below](#not-resolved).
+
+## `not resolved, nothing changed. Missing: ...`
+
+The script that closes a workstream found no plan, code review, self-test record or manual run in its folders. Finish what it names. If the work changed no code, tell the agent so and it can close it with `--no-code`. If the work is abandoned, close it as canceled.
+
+## `spawn EPERM` when running tests
+
+This is Codex's Windows sandbox refusing to let Node start a child process. Your code and tests are fine. Run the suite in a normal terminal and paste the result to the agent. Do not let it rewrite the tests to suit the sandbox. The pack tells it not to, but this is the one to watch for.
+
+## Codex says every command is blocked by policy
+
+On Windows, set the sandbox to unelevated mode as shown in [Get started](https://implementator.io/get-started#codex-windows).
+
+## `CreateFileMapping` or bash errors in Codex on Windows
+
+Git Bash cannot start inside that sandbox. The pack does not need it, because every script is Python. If your project's commands are written for bash, the check script falls back to the system shell, so a command that truly needs bash has to be run by you.
+
+## `gh` says the token is invalid, but you are signed in
+
+A sandboxed agent often cannot read the system keyring. Run `gh auth status` in a normal terminal to be sure. The pack shows this as a warning for that reason.
+
+## `cannot create ... (263 characters): No such file or directory`
+
+Windows stops at 260 characters unless long paths are turned on, and a workstream's files sit several folders deep. Move the notes repo somewhere short, like `C:\notes`, or use shorter initiative names. Git may need `core.longpaths` for the same reason, and that is your choice to make: the agent should not change it.
+
+## `set IMPL_NOTES_ROOT to the notes repo root`
+
+The agent ran a script without saying where your notes are. It will usually correct this by itself. On PowerShell the variable lasts for one command, so it has to be set on the same line.
+
+## `BLOCKED: live claim by ...`
+
+Another session holds this workstream. Finish there, or wait for the claim to expire after four hours. If that session is gone, tell the agent to take over; it will use `--force` on your word.
+
+## Settings fail to apply on PowerShell, or accented text comes out damaged
+
+PowerShell strips quotes from JSON arguments and re-encodes piped text. The pack tells the agent to pass both through a temporary file. If you see damage in a journal, remind it to use `--body-file`.
+
+## The agent suddenly cannot reach the pack
+
+Another app probably signed in to your Agensi account, and only the newest stays connected. Sign in again from the agent you want to use. See [Connect your agent](https://implementator.io/get-started#connect).
+
+## The review says it was not independent
+
+The review is meant to run in separate subagents. If your agent could not start any in that session, it does the review itself and says so. Ask for a re-run with independent subagents if the change matters. It costs more.
+
+## A temporary script was left behind
+
+Each script runs from a temporary file that the agent deletes afterwards. If a delete is refused, the agent should give you the exact path, and you can remove the file yourself. It holds no private data.
+
+## Still stuck
+
+Message the creator through [Agensi](https://www.agensi.io/creators/nihillon), and include the message you saw.

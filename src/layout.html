@@ -1,12 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{title}}</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
+{{head}}
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,7 +30,7 @@
 </main>
 </div>
 <footer class="foot">
-<p>Settings and presets on these pages are generated from the source at commit <code>{{rev}}</code>.</p>
+<p>Last updated <time datetime="{{updated-iso}}">{{updated}}</time>. Settings and presets on these pages are generated from the source at commit <code>{{rev}}</code>.</p>
 </footer>
 </body>
 </html>

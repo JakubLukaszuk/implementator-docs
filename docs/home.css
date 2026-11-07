@@ -1,5 +1,7 @@
 /* The home page. Colours, the top bar and buttons come from base.css. */
 body { overflow-x: hidden; }
+.skip { left: -999px; position: absolute; }
+.skip:focus { background: var(--ink-3); left: 16px; padding: 6px 10px; top: 8px; z-index: 20; }
 h1, h2, h3 { letter-spacing: -0.025em; line-height: 1.08; margin: 0; }
 h2 { font-size: clamp(32px, 4.4vw, 54px); }
 .wrap { margin: 0 auto; max-width: 1180px; padding: 0 24px; }
@@ -87,7 +89,22 @@ section { padding: 104px 0; }
 .pre { opacity: 0; transform: translateY(26px); transition: opacity 0.7s, transform 0.7s; }
 .in { opacity: 1; transform: none; }
 
+/* The stages as plain text, for readers without script. home.js swaps in the rail. */
+.stage-list { margin: 40px 0 0; padding-left: 24px; }
+.stage-list li { color: var(--body); margin-bottom: 8px; }
+.stage-list b { color: var(--text); }
+.rail[hidden], .stage-card[hidden], .stage-list[hidden] { display: none; }
+.stage-title { color: var(--text); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+
+.faq { background: var(--ink-2); }
+.qs { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 44px; }
+.q { background: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; }
+.q h3 { font-size: 21px; line-height: 1.2; margin-bottom: 10px; }
+.q p { color: var(--body); margin: 0; }
+.q code { background: var(--ink-3); border-radius: 5px; color: #dbe6ff; font: 0.88em ui-monospace, "Cascadia Code", Consolas, Menlo, monospace; padding: 2px 6px; }
+
 @media (max-width: 940px) {
+  .qs { grid-template-columns: minmax(0, 1fr); }
   .hero, .two, .flip { grid-template-columns: minmax(0, 1fr); }
   .hero { gap: 36px; min-height: 0; padding: 40px 16px 56px; }
   .hero::before { display: none; }

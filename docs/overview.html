@@ -3,21 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview - Implementator</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css">
+<title>What is Implementator? Skills, loop and limits</title>
+<meta name="description" content="What Implementator is: the eight-stage loop, the thirteen skills in the pack, what stays yours, and what it cannot promise.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://implementator.io/overview">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Implementator">
+<meta property="og:title" content="What is Implementator? Skills, loop and limits">
+<meta property="og:description" content="What Implementator is: the eight-stage loop, the thirteen skills in the pack, what stays yours, and what it cannot promise.">
+<meta property="og:url" content="https://implementator.io/overview">
+<meta property="og:image" content="https://implementator.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Implementator: your coding agent, with a process.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/base.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "@id": "https://implementator.io/overview#article", "headline": "What is Implementator? Skills, loop and limits", "description": "What Implementator is: the eight-stage loop, the thirteen skills in the pack, what stays yours, and what it cannot promise.", "url": "https://implementator.io/overview", "mainEntityOfPage": "https://implementator.io/overview", "inLanguage": "en", "image": "https://implementator.io/img/og.png", "datePublished": "2026-11-06", "dateModified": "2026-11-07", "author": {"@id": "https://implementator.io/#org"}, "publisher": {"@id": "https://implementator.io/#org"}, "about": {"@id": "https://implementator.io/#app"}, "isPartOf": {"@id": "https://implementator.io/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Implementator", "item": "https://implementator.io/"}, {"@type": "ListItem", "position": 2, "name": "Overview", "item": "https://implementator.io/overview"}]}]}</script>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
 <header class="bar">
-  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <a class="mark" href="/"><img src="/img/logo.png" alt="" width="32" height="32"> Implementator</a>
   <nav aria-label="Main">
-    <a class="wide-only" href="index.html#loop">The loop</a>
-    <a class="wide-only" href="index.html#proof">Proof</a>
-    <a href="videos.html">Videos</a>
-    <a href="overview.html" aria-current="page">Docs</a>
+    <a class="wide-only" href="/#loop">The loop</a>
+    <a class="wide-only" href="/#proof">Proof</a>
+    <a href="/videos">Videos</a>
+    <a href="/overview" aria-current="page">Docs</a>
   </nav>
 </header>
 <div class="shell">
@@ -25,13 +43,13 @@
 <p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="overview.html" aria-current="page">Overview</a></li>
-<li><a href="get-started.html">Get started</a></li>
-<li><a href="first-project.html">Your first project</a></li>
-<li><a href="daily-use.html">Daily use</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="/overview" aria-current="page">Overview</a></li>
+<li><a href="/get-started">Get started</a></li>
+<li><a href="/first-project">Your first project</a></li>
+<li><a href="/daily-use">Daily use</a></li>
+<li><a href="/configuration">Configuration</a></li>
+<li><a href="/videos">Videos</a></li>
+<li><a href="/troubleshooting">Troubleshooting</a></li>
 </ul>
 </nav>
 </aside>
@@ -58,7 +76,7 @@
 </ol>
 <p class="key"><span>Orange</span> marks a stage that waits for you.</p>
 
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm" aria-label="What Implementator does"></video><figcaption><b>What Implementator does</b> A real change, from a Jira ticket to a merged pull request.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v1-what-it-does.jpg" src="/videos/v1-what-it-does.webm" aria-label="What Implementator does"></video><figcaption><b>What Implementator does</b> A real change, from a Jira ticket to a merged pull request.</figcaption></figure>
 
 <h2 id="why">Why people use it</h2>
 <ul>
@@ -94,18 +112,18 @@
 
 <h2 id="limits">What to expect, honestly</h2>
 <ul>
-<li><strong>The rules are instructions, not locks.</strong> A local install could use git hooks to enforce them. A live pack cannot. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk, but an agent can still drift, so read what it reports. If it skips something, <a href="troubleshooting.html#skipped">here is what to do</a>.</li>
+<li><strong>The rules are instructions, not locks.</strong> A local install could use git hooks to enforce them. A live pack cannot. One script does refuse to mark work resolved without a plan, a review, a self-test record and a manual run on disk, but an agent can still drift, so read what it reports. If it skips something, <a href="/troubleshooting#skipped">here is what to do</a>.</li>
 <li><strong>Tested on a small scale.</strong> We ran it from setup to archive in Claude Code and in Codex CLI on Windows, on a small Node command-line project, with the store's delivery emulated. Linux, macOS and other agents have not been tested yet.</li>
-<li><strong>It costs real usage.</strong> One full run from setup to a closed feature used about $3.70 on Claude Code. A review on a larger change costs more. The <a href="configuration.html#models">model settings</a> are how you tune this.</li>
-<li><strong>Codex on Windows has one limit you will meet.</strong> Its sandbox stops Node from starting child processes, so you run Node test suites yourself. <a href="get-started.html#codex-windows">Details</a>.</li>
+<li><strong>It costs real usage.</strong> One full run from setup to a closed feature used about $3.70 on Claude Code. A review on a larger change costs more. The <a href="/configuration#models">model settings</a> are how you tune this.</li>
+<li><strong>Codex on Windows has one limit you will meet.</strong> Its sandbox stops Node from starting child processes, so you run Node test suites yourself. <a href="/get-started#codex-windows">Details</a>.</li>
 </ul>
 
 
-<nav class="pager" aria-label="Pages"><a class="next" href="get-started.html"><span>Next</span>Get started</a></nav>
+<nav class="pager" aria-label="Pages"><a class="next" href="/get-started"><span>Next</span>Get started</a></nav>
 </main>
 </div>
 <footer class="foot">
-<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+<p>Last updated <time datetime="2026-11-07">7 November 2026</time>. Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
 </footer>
 </body>
 </html>

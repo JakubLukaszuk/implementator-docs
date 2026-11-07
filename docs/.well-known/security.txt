@@ -1,0 +1,4 @@
+Contact: https://www.agensi.io/creators/nihillon
+Expires: 2027-11-07T00:00:00.000Z
+Preferred-Languages: en, pl
+Canonical: https://implementator.io/.well-known/security.txt

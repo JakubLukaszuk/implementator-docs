@@ -1,0 +1,20 @@
+# Implementator
+
+> Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, real tests, independent review, your own manual test and a written record.
+
+It runs in Claude Code and Codex CLI and is delivered through the Agensi store over MCP, so nothing is installed. Everything it writes goes into a separate notes repo that belongs to the user. Tested on Windows on a small Node project; Linux, macOS and other agents are not tested yet.
+
+## Docs
+
+- [Overview](https://implementator.io/overview): What Implementator is: the eight-stage loop, the thirteen skills in the pack, what stays yours, and what it cannot promise.
+- [Get started](https://implementator.io/get-started): Connect Claude Code or Codex CLI to the store, run the setup, answer six questions and create your notes repo. Includes Codex on Windows.
+- [Your first project](https://implementator.io/first-project): From a code repo to one finished change: connect the repo, approve its skills, run preflight, approve a plan, test by hand, commit and close.
+- [Daily use](https://implementator.io/daily-use): What a normal day looks like with Implementator: resuming work, starting a change, tickets, mockups, reviews and what to say to your agent.
+- [Configuration](https://implementator.io/configuration): Every Implementator setting with its values and default, plus the presets, how a value is resolved and how to change one in plain language.
+- [Videos](https://implementator.io/videos): Nine replays of real runs on a public demo repo: setup, one full change, Jira tickets, mockups, GitHub pull requests and Codex on Windows.
+- [Troubleshooting](https://implementator.io/troubleshooting): Fixes for skipped stages, spawn EPERM, blocked commands, gh token warnings, Windows path limits and lost connections, as the pack reports them.
+
+## Optional
+
+- [Full text of the site](https://implementator.io/llms-full.txt)
+- [Agensi store](https://www.agensi.io/creators/nihillon)

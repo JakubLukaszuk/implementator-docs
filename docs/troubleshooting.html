@@ -3,21 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Troubleshooting - Implementator</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css">
+<title>Implementator troubleshooting: common errors and fixes</title>
+<meta name="description" content="Fixes for skipped stages, spawn EPERM, blocked commands, gh token warnings, Windows path limits and lost connections, as the pack reports them.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://implementator.io/troubleshooting">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Implementator">
+<meta property="og:title" content="Implementator troubleshooting: common errors and fixes">
+<meta property="og:description" content="Fixes for skipped stages, spawn EPERM, blocked commands, gh token warnings, Windows path limits and lost connections, as the pack reports them.">
+<meta property="og:url" content="https://implementator.io/troubleshooting">
+<meta property="og:image" content="https://implementator.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Implementator: your coding agent, with a process.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/base.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "@id": "https://implementator.io/troubleshooting#article", "headline": "Implementator troubleshooting: common errors and fixes", "description": "Fixes for skipped stages, spawn EPERM, blocked commands, gh token warnings, Windows path limits and lost connections, as the pack reports them.", "url": "https://implementator.io/troubleshooting", "mainEntityOfPage": "https://implementator.io/troubleshooting", "inLanguage": "en", "image": "https://implementator.io/img/og.png", "datePublished": "2026-11-06", "dateModified": "2026-11-07", "author": {"@id": "https://implementator.io/#org"}, "publisher": {"@id": "https://implementator.io/#org"}, "about": {"@id": "https://implementator.io/#app"}, "isPartOf": {"@id": "https://implementator.io/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Implementator", "item": "https://implementator.io/"}, {"@type": "ListItem", "position": 2, "name": "Troubleshooting", "item": "https://implementator.io/troubleshooting"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "The agent skipped a test, the review or the manual pass", "acceptedAnswer": {"@type": "Answer", "text": "Ask it: \"What is left before this is done?\" In our runs that was enough for the agent to name what it had skipped. Then say \"Go on, finish the loop.\" The rules are instructions and an agent can drift from them, more so on a long session. Starting a new session reloads them. Closing is checked by a script as well: see below."}}, {"@type": "Question", "name": "not resolved, nothing changed. Missing: ...", "acceptedAnswer": {"@type": "Answer", "text": "The script that closes a workstream found no plan, code review, self-test record or manual run in its folders. Finish what it names. If the work changed no code, tell the agent so and it can close it with --no-code. If the work is abandoned, close it as canceled."}}, {"@type": "Question", "name": "spawn EPERM when running tests", "acceptedAnswer": {"@type": "Answer", "text": "This is Codex's Windows sandbox refusing to let Node start a child process. Your code and tests are fine. Run the suite in a normal terminal and paste the result to the agent. Do not let it rewrite the tests to suit the sandbox. The pack tells it not to, but this is the one to watch for."}}, {"@type": "Question", "name": "Codex says every command is blocked by policy", "acceptedAnswer": {"@type": "Answer", "text": "On Windows, set the sandbox to unelevated mode as shown in Get started."}}, {"@type": "Question", "name": "CreateFileMapping or bash errors in Codex on Windows", "acceptedAnswer": {"@type": "Answer", "text": "Git Bash cannot start inside that sandbox. The pack does not need it, because every script is Python. If your project's commands are written for bash, the check script falls back to the system shell, so a command that truly needs bash has to be run by you."}}, {"@type": "Question", "name": "gh says the token is invalid, but you are signed in", "acceptedAnswer": {"@type": "Answer", "text": "A sandboxed agent often cannot read the system keyring. Run gh auth status in a normal terminal to be sure. The pack shows this as a warning for that reason."}}, {"@type": "Question", "name": "cannot create ... (263 characters): No such file or directory", "acceptedAnswer": {"@type": "Answer", "text": "Windows stops at 260 characters unless long paths are turned on, and a workstream's files sit several folders deep. Move the notes repo somewhere short, like C:\\notes, or use shorter initiative names. Git may need core.longpaths for the same reason, and that is your choice to make: the agent should not change it."}}, {"@type": "Question", "name": "set IMPL_NOTES_ROOT to the notes repo root", "acceptedAnswer": {"@type": "Answer", "text": "The agent ran a script without saying where your notes are. It will usually correct this by itself. On PowerShell the variable lasts for one command, so it has to be set on the same line."}}, {"@type": "Question", "name": "BLOCKED: live claim by ...", "acceptedAnswer": {"@type": "Answer", "text": "Another session holds this workstream. Finish there, or wait for the claim to expire after four hours. If that session is gone, tell the agent to take over; it will use --force on your word."}}, {"@type": "Question", "name": "Settings fail to apply on PowerShell, or accented text comes out damaged", "acceptedAnswer": {"@type": "Answer", "text": "PowerShell strips quotes from JSON arguments and re-encodes piped text. The pack tells the agent to pass both through a temporary file. If you see damage in a journal, remind it to use --body-file."}}, {"@type": "Question", "name": "The agent suddenly cannot reach the pack", "acceptedAnswer": {"@type": "Answer", "text": "Another app probably signed in to your Agensi account, and only the newest stays connected. Sign in again from the agent you want to use. See Connect your agent."}}, {"@type": "Question", "name": "The review says it was not independent", "acceptedAnswer": {"@type": "Answer", "text": "The review is meant to run in separate subagents. If your agent could not start any in that session, it does the review itself and says so. Ask for a re-run with independent subagents if the change matters. It costs more."}}, {"@type": "Question", "name": "A temporary script was left behind", "acceptedAnswer": {"@type": "Answer", "text": "Each script runs from a temporary file that the agent deletes afterwards. If a delete is refused, the agent should give you the exact path, and you can remove the file yourself. It holds no private data."}}]}]}</script>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
 <header class="bar">
-  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <a class="mark" href="/"><img src="/img/logo.png" alt="" width="32" height="32"> Implementator</a>
   <nav aria-label="Main">
-    <a class="wide-only" href="index.html#loop">The loop</a>
-    <a class="wide-only" href="index.html#proof">Proof</a>
-    <a href="videos.html">Videos</a>
-    <a href="overview.html" aria-current="page">Docs</a>
+    <a class="wide-only" href="/#loop">The loop</a>
+    <a class="wide-only" href="/#proof">Proof</a>
+    <a href="/videos">Videos</a>
+    <a href="/overview" aria-current="page">Docs</a>
   </nav>
 </header>
 <div class="shell">
@@ -25,13 +43,13 @@
 <p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="overview.html">Overview</a></li>
-<li><a href="get-started.html">Get started</a></li>
-<li><a href="first-project.html">Your first project</a></li>
-<li><a href="daily-use.html">Daily use</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="/overview">Overview</a></li>
+<li><a href="/get-started">Get started</a></li>
+<li><a href="/first-project">Your first project</a></li>
+<li><a href="/daily-use">Daily use</a></li>
+<li><a href="/configuration">Configuration</a></li>
+<li><a href="/videos">Videos</a></li>
+<li><a href="/troubleshooting" aria-current="page">Troubleshooting</a></li>
 </ul>
 </nav>
 </aside>
@@ -60,7 +78,7 @@
 
 <div class="qa" id="policy">
 <h2>Codex says every command is blocked by policy</h2>
-<p>On Windows, set the sandbox to unelevated mode as shown in <a href="get-started.html#codex-windows">Get started</a>.</p>
+<p>On Windows, set the sandbox to unelevated mode as shown in <a href="/get-started#codex-windows">Get started</a>.</p>
 </div>
 
 <div class="qa" id="bash">
@@ -95,7 +113,7 @@
 
 <div class="qa" id="disconnected">
 <h2>The agent suddenly cannot reach the pack</h2>
-<p>Another app probably signed in to your Agensi account, and only the newest stays connected. Sign in again from the agent you want to use. See <a href="get-started.html#connect">Connect your agent</a>.</p>
+<p>Another app probably signed in to your Agensi account, and only the newest stays connected. Sign in again from the agent you want to use. See <a href="/get-started#connect">Connect your agent</a>.</p>
 </div>
 
 <div class="qa" id="review">
@@ -111,11 +129,11 @@
 <h2 id="more">Still stuck</h2>
 <p>Message the creator through <a href="https://www.agensi.io/creators/nihillon">Agensi</a>, and include the message you saw.</p>
 
-<nav class="pager" aria-label="Pages"><a class="prev" href="videos.html"><span>Previous</span>Videos</a></nav>
+<nav class="pager" aria-label="Pages"><a class="prev" href="/videos"><span>Previous</span>Videos</a></nav>
 </main>
 </div>
 <footer class="foot">
-<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+<p>Last updated <time datetime="2026-11-07">7 November 2026</time>. Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
 </footer>
 </body>
 </html>

@@ -3,21 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Videos - Implementator</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css">
+<title>Implementator videos: real runs from ticket to merge</title>
+<meta name="description" content="Nine replays of real runs on a public demo repo: setup, one full change, Jira tickets, mockups, GitHub pull requests and Codex on Windows.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://implementator.io/videos">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Implementator">
+<meta property="og:title" content="Implementator videos: real runs from ticket to merge">
+<meta property="og:description" content="Nine replays of real runs on a public demo repo: setup, one full change, Jira tickets, mockups, GitHub pull requests and Codex on Windows.">
+<meta property="og:url" content="https://implementator.io/videos">
+<meta property="og:image" content="https://implementator.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Implementator: your coding agent, with a process.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/base.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "@id": "https://implementator.io/videos#article", "headline": "Implementator videos: real runs from ticket to merge", "description": "Nine replays of real runs on a public demo repo: setup, one full change, Jira tickets, mockups, GitHub pull requests and Codex on Windows.", "url": "https://implementator.io/videos", "mainEntityOfPage": "https://implementator.io/videos", "inLanguage": "en", "image": "https://implementator.io/img/og.png", "datePublished": "2026-11-06", "dateModified": "2026-11-07", "author": {"@id": "https://implementator.io/#org"}, "publisher": {"@id": "https://implementator.io/#org"}, "about": {"@id": "https://implementator.io/#app"}, "isPartOf": {"@id": "https://implementator.io/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Implementator", "item": "https://implementator.io/"}, {"@type": "ListItem", "position": 2, "name": "Videos", "item": "https://implementator.io/videos"}]}, {"@type": "VideoObject", "name": "What Implementator does", "description": "A real change, from a Jira ticket to a merged pull request.", "duration": "PT1M1S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v1-what-it-does.jpg", "contentUrl": "https://implementator.io/videos/v1-what-it-does.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "Set it up", "description": "The notes repo, the pointer file and the six questions.", "duration": "PT1M35S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v2-set-it-up.jpg", "contentUrl": "https://implementator.io/videos/v2-set-it-up.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "Connect a repo", "description": "What the agent detects, and the skills it proposes.", "duration": "PT1M51S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v3-connect-a-repo.jpg", "contentUrl": "https://implementator.io/videos/v3-connect-a-repo.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "One change, start to finish", "description": "Plan, code, tests, review, manual test, pull request, close.", "duration": "PT3M10S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v4-one-change.jpg", "contentUrl": "https://implementator.io/videos/v4-one-change.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "Change a setting", "description": "A plain request, a diff, a yes, and a gate that will not switch off.", "duration": "PT0M54S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v5-change-a-setting.jpg", "contentUrl": "https://implementator.io/videos/v5-change-a-setting.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "Codex on Windows", "description": "The sandbox, and what the agent does when Node cannot run there.", "duration": "PT1M24S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v6-codex-on-windows.jpg", "contentUrl": "https://implementator.io/videos/v6-codex-on-windows.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "Work from a Jira ticket", "description": "The ticket is read, saved unchanged, and planned from.", "duration": "PT1M21S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v8-jira-ticket.jpg", "contentUrl": "https://implementator.io/videos/v8-jira-ticket.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "From a mockup to shipped code", "description": "Options on the running page, a pick, then the whole loop.", "duration": "PT3M21S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v9-mockup-to-code.jpg", "contentUrl": "https://implementator.io/videos/v9-mockup-to-code.webm", "publisher": {"@id": "https://implementator.io/#org"}}, {"@type": "VideoObject", "name": "GitHub, from branch to merge", "description": "A real draft pull request, CI, your merge, and the close.", "duration": "PT1M49S", "uploadDate": "2026-11-06T12:00:00+00:00", "thumbnailUrl": "https://implementator.io/img/posters/v10-github.jpg", "contentUrl": "https://implementator.io/videos/v10-github.webm", "publisher": {"@id": "https://implementator.io/#org"}}]}</script>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
 <header class="bar">
-  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <a class="mark" href="/"><img src="/img/logo.png" alt="" width="32" height="32"> Implementator</a>
   <nav aria-label="Main">
-    <a class="wide-only" href="index.html#loop">The loop</a>
-    <a class="wide-only" href="index.html#proof">Proof</a>
-    <a href="videos.html" aria-current="page">Videos</a>
-    <a href="overview.html">Docs</a>
+    <a class="wide-only" href="/#loop">The loop</a>
+    <a class="wide-only" href="/#proof">Proof</a>
+    <a href="/videos" aria-current="page">Videos</a>
+    <a href="/overview">Docs</a>
   </nav>
 </header>
 <div class="shell">
@@ -25,13 +43,13 @@
 <p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="overview.html">Overview</a></li>
-<li><a href="get-started.html">Get started</a></li>
-<li><a href="first-project.html">Your first project</a></li>
-<li><a href="daily-use.html">Daily use</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="videos.html" aria-current="page">Videos</a></li>
-<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="/overview">Overview</a></li>
+<li><a href="/get-started">Get started</a></li>
+<li><a href="/first-project">Your first project</a></li>
+<li><a href="/daily-use">Daily use</a></li>
+<li><a href="/configuration">Configuration</a></li>
+<li><a href="/videos" aria-current="page">Videos</a></li>
+<li><a href="/troubleshooting">Troubleshooting</a></li>
 </ul>
 </nav>
 </aside>
@@ -43,22 +61,22 @@
 </div>
 <div class="note"><p>Recorded before store release, with delivery emulated: the agent read the pack from a local folder, not over MCP. There is no sound.</p></div>
 <div class="film-grid">
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v1-what-it-does.jpg" src="videos/v1-what-it-does.webm" aria-label="What Implementator does"></video><figcaption><b>What Implementator does</b> A real change, from a Jira ticket to a merged pull request.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v2-set-it-up.jpg" src="videos/v2-set-it-up.webm" aria-label="Set it up"></video><figcaption><b>Set it up</b> The notes repo, the pointer file and the six questions.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v3-connect-a-repo.jpg" src="videos/v3-connect-a-repo.webm" aria-label="Connect a repo"></video><figcaption><b>Connect a repo</b> What the agent detects, and the skills it proposes.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v4-one-change.jpg" src="videos/v4-one-change.webm" aria-label="One change, start to finish"></video><figcaption><b>One change, start to finish</b> Plan, code, tests, review, manual test, pull request, close.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v5-change-a-setting.jpg" src="videos/v5-change-a-setting.webm" aria-label="Change a setting"></video><figcaption><b>Change a setting</b> A plain request, a diff, a yes, and a gate that will not switch off.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v6-codex-on-windows.jpg" src="videos/v6-codex-on-windows.webm" aria-label="Codex on Windows"></video><figcaption><b>Codex on Windows</b> The sandbox, and what the agent does when Node cannot run there.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v8-jira-ticket.jpg" src="videos/v8-jira-ticket.webm" aria-label="Work from a Jira ticket"></video><figcaption><b>Work from a Jira ticket</b> The ticket is read, saved unchanged, and planned from.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v9-mockup-to-code.jpg" src="videos/v9-mockup-to-code.webm" aria-label="From a mockup to shipped code"></video><figcaption><b>From a mockup to shipped code</b> Options on the running page, a pick, then the whole loop.</figcaption></figure>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v10-github.jpg" src="videos/v10-github.webm" aria-label="GitHub, from branch to merge"></video><figcaption><b>GitHub, from branch to merge</b> A real draft pull request, CI, your merge, and the close.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v1-what-it-does.jpg" src="/videos/v1-what-it-does.webm" aria-label="What Implementator does"></video><figcaption><b>What Implementator does</b> A real change, from a Jira ticket to a merged pull request.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v2-set-it-up.jpg" src="/videos/v2-set-it-up.webm" aria-label="Set it up"></video><figcaption><b>Set it up</b> The notes repo, the pointer file and the six questions.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v3-connect-a-repo.jpg" src="/videos/v3-connect-a-repo.webm" aria-label="Connect a repo"></video><figcaption><b>Connect a repo</b> What the agent detects, and the skills it proposes.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v4-one-change.jpg" src="/videos/v4-one-change.webm" aria-label="One change, start to finish"></video><figcaption><b>One change, start to finish</b> Plan, code, tests, review, manual test, pull request, close.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v5-change-a-setting.jpg" src="/videos/v5-change-a-setting.webm" aria-label="Change a setting"></video><figcaption><b>Change a setting</b> A plain request, a diff, a yes, and a gate that will not switch off.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v6-codex-on-windows.jpg" src="/videos/v6-codex-on-windows.webm" aria-label="Codex on Windows"></video><figcaption><b>Codex on Windows</b> The sandbox, and what the agent does when Node cannot run there.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v8-jira-ticket.jpg" src="/videos/v8-jira-ticket.webm" aria-label="Work from a Jira ticket"></video><figcaption><b>Work from a Jira ticket</b> The ticket is read, saved unchanged, and planned from.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v9-mockup-to-code.jpg" src="/videos/v9-mockup-to-code.webm" aria-label="From a mockup to shipped code"></video><figcaption><b>From a mockup to shipped code</b> Options on the running page, a pick, then the whole loop.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v10-github.jpg" src="/videos/v10-github.webm" aria-label="GitHub, from branch to merge"></video><figcaption><b>GitHub, from branch to merge</b> A real draft pull request, CI, your merge, and the close.</figcaption></figure>
 </div>
 
-<nav class="pager" aria-label="Pages"><a class="prev" href="configuration.html"><span>Previous</span>Configuration</a><a class="next" href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+<nav class="pager" aria-label="Pages"><a class="prev" href="/configuration"><span>Previous</span>Configuration</a><a class="next" href="/troubleshooting"><span>Next</span>Troubleshooting</a></nav>
 </main>
 </div>
 <footer class="foot">
-<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+<p>Last updated <time datetime="2026-11-07">7 November 2026</time>. Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
 </footer>
 </body>
 </html>

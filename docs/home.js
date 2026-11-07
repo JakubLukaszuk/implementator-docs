@@ -2,22 +2,19 @@
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // The loop: the stage cycles by itself and stops longer where a person is needed.
-  var STAGES = [
-    ['Plan', true, 'The agent reads the repo and the ticket, then writes a plan. No code until you approve it.'],
-    ['Code', false, "Written to the skills generated for this repo, so it follows the conventions already there."],
-    ['Tests and checks', false, 'Your own test, lint and typecheck commands, never guessed ones.'],
-    ['Self-test', false, 'The agent drives the real app or CLI, and forces the failure paths too.'],
-    ['Review', false, 'Independent subagents, one lens each. Every finding gets resolved, and any fix goes back through the loop.'],
-    ['Manual test', true, 'The agent writes the steps and the expected results. You run them.'],
-    ['Commit', true, 'Only after you confirm. Keep this step for yourself if you prefer.'],
-    ['Close', true, 'When you say so, the work is archived with its plan, reviews and test records.']
-  ];
+  var list = document.getElementById('stage-list');
+  var STAGES = Array.prototype.map.call(list.children, function (li) {
+    return [li.querySelector('b').textContent, li.hasAttribute('data-you'), li.querySelector('span').textContent];
+  });
   var rail = document.getElementById('rail');
   var tag = document.getElementById('stage-tag');
   var title = document.getElementById('stage-title');
   var text = document.getElementById('stage-text');
   var card = document.getElementById('stage-card');
   var current = 0, timer = null, held = false;
+  list.hidden = true;
+  rail.hidden = false;
+  card.hidden = false;
 
   STAGES.forEach(function (s, i) {
     var li = document.createElement('li');
@@ -47,9 +44,17 @@
   }
   show(0);
 
-  // The replay opens on an empty screen, so the hero starts a few seconds in.
+  // The replay opens on an empty screen, so the hero starts a few seconds in. It loads after the page,
+  // so the poster is what a slow connection or a reader with reduced motion gets.
   var hero = document.querySelector('.term video');
-  if (hero) hero.addEventListener('loadedmetadata', function () { hero.currentTime = 6; }, { once: true });
+  var saving = navigator.connection && navigator.connection.saveData;
+  if (hero && !calm && !saving) {
+    hero.addEventListener('loadedmetadata', function () { hero.currentTime = 6; }, { once: true });
+    window.addEventListener('load', function () {
+      hero.src = hero.dataset.src;
+      hero.play().catch(function () {});
+    });
+  }
 
   // The before and after slider.
   var split = document.getElementById('split');

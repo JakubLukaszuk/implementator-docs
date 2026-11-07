@@ -3,21 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily use - Implementator</title>
-<meta name="description" content="Documentation for Implementator, a skill pack that runs a planned, tested and reviewed implementation loop across your repos in Claude Code or Codex.">
-<link rel="icon" href="img/logo.png">
-<link rel="stylesheet" href="base.css">
-<link rel="stylesheet" href="style.css">
+<title>Daily use: how to work with Implementator</title>
+<meta name="description" content="What a normal day looks like with Implementator: resuming work, starting a change, tickets, mockups, reviews and what to say to your agent.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://implementator.io/daily-use">
+<meta name="theme-color" content="#0b0d12">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Implementator">
+<meta property="og:title" content="Daily use: how to work with Implementator">
+<meta property="og:description" content="What a normal day looks like with Implementator: resuming work, starting a change, tickets, mockups, reviews and what to say to your agent.">
+<meta property="og:url" content="https://implementator.io/daily-use">
+<meta property="og:image" content="https://implementator.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Implementator: your coding agent, with a process.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/base.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "@id": "https://implementator.io/daily-use#article", "headline": "Daily use: how to work with Implementator", "description": "What a normal day looks like with Implementator: resuming work, starting a change, tickets, mockups, reviews and what to say to your agent.", "url": "https://implementator.io/daily-use", "mainEntityOfPage": "https://implementator.io/daily-use", "inLanguage": "en", "image": "https://implementator.io/img/og.png", "datePublished": "2026-11-06", "dateModified": "2026-11-07", "author": {"@id": "https://implementator.io/#org"}, "publisher": {"@id": "https://implementator.io/#org"}, "about": {"@id": "https://implementator.io/#app"}, "isPartOf": {"@id": "https://implementator.io/#site"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Implementator", "item": "https://implementator.io/"}, {"@type": "ListItem", "position": 2, "name": "Daily use", "item": "https://implementator.io/daily-use"}]}]}</script>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to the content</a>
 <header class="bar">
-  <a class="mark" href="index.html"><img src="img/logo.png" alt="" width="32" height="32"> Implementator</a>
+  <a class="mark" href="/"><img src="/img/logo.png" alt="" width="32" height="32"> Implementator</a>
   <nav aria-label="Main">
-    <a class="wide-only" href="index.html#loop">The loop</a>
-    <a class="wide-only" href="index.html#proof">Proof</a>
-    <a href="videos.html">Videos</a>
-    <a href="overview.html" aria-current="page">Docs</a>
+    <a class="wide-only" href="/#loop">The loop</a>
+    <a class="wide-only" href="/#proof">Proof</a>
+    <a href="/videos">Videos</a>
+    <a href="/overview" aria-current="page">Docs</a>
   </nav>
 </header>
 <div class="shell">
@@ -25,13 +43,13 @@
 <p>Docs</p>
 <nav aria-label="Documentation">
 <ul>
-<li><a href="overview.html">Overview</a></li>
-<li><a href="get-started.html">Get started</a></li>
-<li><a href="first-project.html">Your first project</a></li>
-<li><a href="daily-use.html" aria-current="page">Daily use</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="/overview">Overview</a></li>
+<li><a href="/get-started">Get started</a></li>
+<li><a href="/first-project">Your first project</a></li>
+<li><a href="/daily-use" aria-current="page">Daily use</a></li>
+<li><a href="/configuration">Configuration</a></li>
+<li><a href="/videos">Videos</a></li>
+<li><a href="/troubleshooting">Troubleshooting</a></li>
 </ul>
 </nav>
 </aside>
@@ -42,7 +60,7 @@
 <p class="lead">Once a project is connected, most days come down to a few sentences. Your agent does not remember the framework between sessions, so begin each one by naming it.</p>
 </div>
 
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v4-one-change.jpg" src="videos/v4-one-change.webm" aria-label="One change, start to finish"></video><figcaption><b>One change, start to finish</b> Plan, code, tests, review, manual test, pull request, close.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v4-one-change.jpg" src="/videos/v4-one-change.webm" aria-label="One change, start to finish"></video><figcaption><b>One change, start to finish</b> Plan, code, tests, review, manual test, pull request, close.</figcaption></figure>
 
 <ol class="day">
 <li id="start">
@@ -53,7 +71,7 @@
 <li id="new">
 <h2>Start new work</h2>
 <p class="say">Use implementator. Add a --version flag to tally that prints the version from package.json.</p>
-<p>Every change opens its own workstream and goes through the <a href="overview.html#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
+<p>Every change opens its own workstream and goes through the <a href="/overview#loop">loop</a>, small ones too. Asking it to skip the plan, or waiving a gate yourself, will not work. That is the point of the pack.</p>
 </li>
 <li id="tickets">
 <h2>Or start from a ticket</h2>
@@ -63,7 +81,7 @@
 <pre><code>claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp
 codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp</code></pre>
 <p>We tested this on a free Jira site in Claude Code. Each call uses Atlassian's Rovo credits.</p>
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v8-jira-ticket.jpg" src="videos/v8-jira-ticket.webm" aria-label="Work from a Jira ticket"></video><figcaption><b>Work from a Jira ticket</b> The ticket is read, saved unchanged, and planned from.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v8-jira-ticket.jpg" src="/videos/v8-jira-ticket.webm" aria-label="Work from a Jira ticket"></video><figcaption><b>Work from a Jira ticket</b> The ticket is read, saved unchanged, and planned from.</figcaption></figure>
 </li>
 <li id="resume">
 <h2>Come back later</h2>
@@ -86,7 +104,7 @@ codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp</code></pre>
 <div><p class="say">Refresh the skills for tally/cli.</p><p>Rescans the repo and shows you what moved.</p></div>
 </div>
 
-<figure class="film"><video controls preload="none" playsinline poster="img/posters/v9-mockup-to-code.jpg" src="videos/v9-mockup-to-code.webm" aria-label="From a mockup to shipped code"></video><figcaption><b>From a mockup to shipped code</b> Options on the running page, a pick, then the whole loop.</figcaption></figure>
+<figure class="film"><video controls preload="none" playsinline poster="/img/posters/v9-mockup-to-code.jpg" src="/videos/v9-mockup-to-code.webm" aria-label="From a mockup to shipped code"></video><figcaption><b>From a mockup to shipped code</b> Options on the running page, a pick, then the whole loop.</figcaption></figure>
 
 <h2 id="notes">Looking after the notes</h2>
 <ul class="checks">
@@ -96,11 +114,11 @@ codex mcp add atlassian --url https://mcp.atlassian.com/v2/mcp</code></pre>
 </ul>
 
 
-<nav class="pager" aria-label="Pages"><a class="prev" href="first-project.html"><span>Previous</span>Your first project</a><a class="next" href="configuration.html"><span>Next</span>Configuration</a></nav>
+<nav class="pager" aria-label="Pages"><a class="prev" href="/first-project"><span>Previous</span>Your first project</a><a class="next" href="/configuration"><span>Next</span>Configuration</a></nav>
 </main>
 </div>
 <footer class="foot">
-<p>Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
+<p>Last updated <time datetime="2026-11-07">7 November 2026</time>. Settings and presets on these pages are generated from the source at commit <code>b8c4818</code>.</p>
 </footer>
 </body>
 </html>
