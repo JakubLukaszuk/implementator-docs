@@ -35,6 +35,8 @@ UPDATED_TEXT = "7 November 2026"
 SUMMARY = ("Implementator is a skill pack for Claude Code and Codex. Every change gets a plan you approve, "
            "real tests, independent review, your own manual test and a written record.")
 INDEXNOW_KEY = "0bb402f061cb64e6ad7a05b5b72bf6ba"
+# Ownership proof for Google Search Console (property https://implementator.io/). Removing it unverifies the site.
+GOOGLE_SITE_VERIFICATION = "GseKEoAASbjK7dr1iqpz1V6n36PBJjY4VawsOpNJdLY"
 
 PAGES = [("overview", "Overview"), ("get-started", "Get started"), ("first-project", "Your first project"),
          ("daily-use", "Daily use"), ("configuration", "Configuration"), ("videos", "Videos"),
@@ -307,7 +309,8 @@ def head(slug, graph, meta=None):
                   '<link rel="canonical" href="' + url + '">']
     else:
         lines.append('<meta name="robots" content="noindex">')
-    lines += ['<meta name="theme-color" content="#0b0d12">',
+    lines += ['<meta name="google-site-verification" content="' + GOOGLE_SITE_VERIFICATION + '">',
+              '<meta name="theme-color" content="#0b0d12">',
               '<meta property="og:type" content="' + ("website" if slug == "index" else "article") + '">',
               '<meta property="og:site_name" content="Implementator">',
               '<meta property="og:title" content="' + html.escape(title) + '">',
